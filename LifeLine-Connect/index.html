@@ -1,0 +1,2159 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Life Line Connect</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="jquery-mobile/styles/jquery.mobile-1.3.1.min.css" rel="stylesheet" />
+    <link href="styles/main.css" rel="stylesheet" />
+    <link href="styles/style.css" rel="stylesheet" />
+    <script src="cordova.js" type="text/javascript"></script>
+    <script src="jquery-mobile/js/jquery-1.9.1.min.js" type="text/javascript"></script>
+    <script src="jquery-mobile/js/jquery.mobile-1.3.1.min.js" type="text/javascript"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true"></script>
+    <script src="scripts/controller.js" type="text/javascript"></script>
+    <script src="scripts/login.js" type="text/javascript"></script>
+    <script src="http://debug.phonegap.com/target/target-script-min.js#81a2586-31b4-11e3-858a-12313d16b935"></script>
+
+</head>
+<body>
+    <!--dialog:-->
+
+    <!-- Start of first page -->
+    <div data-role="page" id="loginpage">
+        <div class="header" data-role="header" data-position="fixed" data-fullscreen="false" data-id="myheader">
+            <div class="headerlogo"></div>
+        </div>
+        <div data-role="content" class="content">
+            <div id="Div6" style="width: 100%;">
+                <div class="headertext">...Login<a href="#popupInfo" data-rel="popup" data-role="button" data-inline="true" data-transition="pop" data-icon="info" data-theme="a" data-iconpos="notext"></a></div>
+                <div data-role="popup" id="popupInfo" class="ui-content" data-overlay-theme="a" data-theme="d" style="max-width: 350px;">
+                    <a href="#" data-rel="back" data-role="button" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+                    <p>Use your LIFE website Username and Password to access LIFE Line.  LIFE Line comes with a subscription to LIFE Training’s Electronic Business Center (EBC).</p>
+                </div>
+            </div>
+            <div style="clear: both;"></div>
+
+            <div>
+                <div>
+                    <!--<label for="basic">Username:</label>-->
+                    <input type="text" name="username" id="username" value="" placeholder="Username" />
+                </div>
+                <div>
+                    <!--<label for="basic">Password:</label>-->
+                    <input type="password" name="password" id="password" value="" placeholder="Password" />
+                </div>
+                <div>
+                    <form>
+                        <label>
+                            <input type="checkbox" name="chkRemember" data-theme="a" id="chkRemember">Remember me
+                        </label>
+                    </form>
+                </div>
+                <div class="buttonbg" id="btnLogin">Login</div>
+
+            </div>
+        </div>
+
+
+    </div>
+    <!-- /page -->
+
+    <div data-role="page" id="alertdialog" data-title="dialog title">
+        <div class="header" data-role="header" data-position="fixed" data-fullscreen="false">
+            <div class="headerlogo"></div>
+        </div>
+        <div data-role="content" class="content">
+            <h2 style="text-align: center;" id="dialogheader">Page title</h2>
+            d
+            <label id="dialogtext">dialog text</label>
+            <a href="#" data-role="button" data-rel="back">OK</a>
+        </div>
+    </div>
+    <!--landing page-->
+    <div data-role="page" id="landingpage" class="ui-responsive-panel">
+        <div class="header" data-role="header" data-position="fixed" data-fullscreen="false" data-id="myheader">
+            <a href="#" data-role="button" data-icon="back" id="btnLogout" class="ui-btn-left" data-mini="false">Logout</a>
+            <div class="headerlogo"></div>
+            <a href="#panelSettings" data-role="button" data-icon="gear" data-iconpos="right" data-inline="true" class="ui-btn-right" data-mini="false">Settings</a>
+
+        </div>
+
+
+        <div data-role="content" class="content">
+
+            <div style="width: 100%;">
+                <div class="headertext" id="btnWelcomeInfo">...Welcome<a href="#popupWelcome" data-rel="popup" data-role="button" data-inline="true" data-transition="pop" data-icon="info" data-theme="a" data-iconpos="notext"></a></div>
+                <div data-role="popup" id="popupWelcome" class="ui-content" data-overlay-theme="a" data-theme="d" style="max-width: 350px;">
+                    <a href="#" data-rel="back" data-role="button" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+                    <p>Welcome to LIFE Line, the communication tool that keeps you connected to the LIFE community.  Receive voice and text messages from LIFE Founders and your upline leadership.  Send messages to your upline, archive messages and much more.</p>
+                    <p>All LIFE Members who have an active LIFE Training EBC subscription have access to LIFE Line.  Once a LIFE Member is Trip 1 Qualified they receive additional LIFE Line features.  From the LIFE website go to My Business/Compensation/Incentive Trips for more details.</p>
+                    <p>With LIFE Line, the lines are always open and you never get a busy signal.  Stay connected, Listen, Learn, Grow and always remember to Live the Life You’ve Always Wanted!</p>
+
+                </div>
+            </div>
+
+            <div style="clear: both;" id="divLandingPageMessage"></div>
+            <!-- <div class="landingbuttons">
+                <div class="buttonbg" id="btnTest">Test</div>
+            </div>-->
+            <div class="landingbuttons" id="divdownline">
+                <div class="buttonbg" id="btnDownline">
+                    <div class="landingbuttonstext">from Downline</div>
+                    <div class="newmessages">
+                        <div id="sFromDownline" class="newmessagesinner">0</div>
+                    </div>
+                </div>
+            </div>
+            <div class="landingbuttons">
+                <div class="buttonbg" id="btnUpline">
+                    <div class="landingbuttonstext">from Upline</div>
+                    <div class="newmessages">
+                        <div id="sFromUpline" class="newmessagesinner">0</div>
+                    </div>
+                </div>
+            </div>
+            <div class="landingbuttons">
+                <div class="buttonbg" id="btnArchive">Archive</div>
+            </div>
+
+
+            <div class="landingbuttons">
+                <div class="buttonbg" id="btnRecordNewMessage">Send a Message</div>
+            </div>
+            <!--<div class="landingbuttons">
+                <div class="buttonbg" id="btnSettings">Settings</div>
+            </div>
+            <a href="#pagetest">test</a>-->
+
+        </div>
+
+
+
+        <div data-role="panel" id="panelSettings" data-theme="a" data-position="right" data-position-fixed="true">
+            <ul data-role="listview" id="ulSettings">
+                <li data-role="list-divider" data-theme="d">Settings</li>
+                <li data-role="list-divider" data-theme="d"><span id="spanUserName"></span></li>
+                <li data-icon="edit" id="btnpagemanagedistros">
+                    <a href="#pagemanagedistros" id="A1" data-transition="slide">My Distribution Lists</a>
+                </li>
+                <li data-icon="gear">
+                    <a href="#pagesettings" id="btnSettingsPanel" data-transition="slide">My Settings</a>
+                </li>
+                <li data-icon="info">
+                    <a href="#help" id="btnhelp" data-transition="slide">Help</a>
+                </li>
+                <li data-icon="info">
+                    <a href="#Privacy" id="A4" data-transition="slide">Privacy Policy</a>
+                </li>
+                <li data-icon="info">
+                    <a href="#terms" id="A3" data-transition="slide">Terms of Service</a>
+                </li>
+                <li data-role="list-divider"></li>
+                <li data-icon="delete">
+                    <a href="#landingpage" data-rel="close" data-theme="d" data-mini="true">Close</a>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+    <!--/page-->
+    <!-- messages page -->
+    <div data-role="page" id="messages">
+        <div class="header" data-role="header" data-position="fixed" data-fullscreen="false" data-id="myheader">
+            <a href="index.html#landingpage" data-role="button" data-icon="arrow-l" class="ui-btn-left" data-transition="slide" data-direction="reverse" data-mini="false">Back</a>
+            <div class="headerlogo"></div>
+        </div>
+        <div data-role="content" class="content">
+            <div style="width: 100%; padding-bottom: 35px;">
+                <div class="headertext" id="messagesheader">...<span id="messageheadertext"></span><a href="#popupMessages" data-rel="popup" data-role="button" data-inline="true" data-transition="pop" data-icon="info" data-theme="a" data-iconpos="notext"></a></div>
+                <div data-role="popup" id="popupMessages" class="ui-content" data-overlay-theme="a" data-theme="d" style="max-width: 350px;">
+                    <a href="#" data-rel="back" data-role="button" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+                    <div id="popupMessagesText"></div>
+                </div>
+            </div>
+            <div style="clear: both;"></div>
+            <div id="messagelist">
+            </div>
+        </div>
+
+    </div>
+
+    <!--/messages page-->
+    <div data-role="page" id="help">
+        <div class="header" data-role="header" data-position="fixed" data-fullscreen="false" data-id="myheader">
+            <a href="index.html#landingpage" data-role="button" data-icon="arrow-l" class="ui-btn-left" data-transition="slide" data-direction="reverse" data-mini="false">Back</a>
+            <div class="headerlogo"></div>
+        </div>
+        <div data-role="content" class="content">
+            <div style="width: 100%; padding-bottom: 35px;">
+                <div class="headertext" id="Div38">Help ...<span id="Span2"></span><a href="#popupMessages" data-rel="popup" data-role="button" data-inline="true" data-transition="pop" data-icon="info" data-theme="a" data-iconpos="notext"></a></div>
+                <div data-role="popup" id="Div39" class="ui-content" data-overlay-theme="a" data-theme="d" style="max-width: 350px;">
+                    <a href="#" data-rel="back" data-role="button" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+                    <div id="Div40"></div>
+                </div>
+            </div>
+            <div style="clear: both;"></div>
+            <div id="Div41">
+
+                <p style="margin-bottom: 0.14in">
+                    Welcome to the LIFE Line Help page! 
+                    Here, you can learn all the ins and outs of this fantastic tool to
+                    keep connected.  LIFE Line is a <u>one-stop</u>, <u>convenient </u>way
+                    to keep informed about the latest recognition and upcoming promotions
+                    or events, or to share a unique experience.  Below are a few helpful
+                    hints that are sure to make your LIFE Line experience a great one!
+                </p>
+                <p style="margin-bottom: 0.14in"><b>Creating/Sending a New Message</b></p>
+                <ul>
+                    <li>
+                        <p style="margin-bottom: 0.14in">
+                            As a new LIFE Member and LIFE
+                            Line customer you have the ability to send a message to your upline
+                            6,000 for 6 Trip Qualified Member. 
+                        </p>
+                    </li>
+                    <li>
+                        <p style="margin-bottom: 0.14in">
+                            To create and send a voice
+                            message, press the “Send a Message” button on the home page.
+                        </p>
+                    </li>
+                    <li>
+                        <p style="margin-bottom: 0.14in">
+                            You may add a text tag to your
+                            message by typing in the box that includes the words “Message
+                            tag”.
+                        </p>
+                    </li>
+                    <li>
+                        <p style="margin-bottom: 0.14in">
+                            To record your message, press
+                            the “Start” button.  Then press “Stop” when finished.  The
+                            timer in the bottom right shows how much time you have remaining for
+                            that message. Press “Play” to review what you’ve just
+                            recorded. If you wish to discard that message and record again,
+                            simply press “Start” and repeat the process.  Press either
+                            “Send” to send the message or “Cancel” to abort the send
+                            message process altogether.
+                        </p>
+                    </li>
+                    <li>
+                        <p style="margin-bottom: 0.14in">
+                            You message will be sent to
+                            your upline 6,000 for 6 Trip Qualifier.  This person’s name will
+                            be listed under your Settings page.
+                        </p>
+                    </li>
+                </ul>
+                <p style="margin-bottom: 0.14in">
+                    <b>Listening/Managing a Received
+                        Message</b>
+                </p>
+                <ul>
+                    <li>
+                        <p style="margin-bottom: 0.14in">
+                            To listen to messages from your
+                            Upline, press the “from Upline” button.  The number inside the
+                            red star shows you the number of new messages in your inbox.  Simply
+                            select the message from the list of messages to listen to the
+                            message.  The lighter shaded messages are messages that have not
+                            been listened to.  The darker shaded messages have already been
+                            listen to.  After playing the message you may Pause, Replay or Stop
+                            the message by selecting the appropriate button.  You may go to the
+                            Previous or Next message by selecting either of those buttons.
+                        </p>
+                    </li>
+                    <li>
+                        <p style="margin-bottom: 0.14in">
+                            You may Reply to the message
+                            with either Voice or Text by pressing “Reply to This Message”
+                            and choosing the” Voice” or “Text” option.  If you choose
+                            “Text”, simply type your message in the box and press “Reply”
+                            or “Cancel” to cancel.  If you choose “Voice”, press Start
+                            to record the message and then “Reply” or “Cancel” to
+                            cancel.
+                        </p>
+                    </li>
+                    <li>
+                        <p style="margin-bottom: 0.14in">
+                            Clicking the “Tasks” menu
+                            at the top while viewing a specific message also gives you the
+                            “Reply” option as well as the option to “Archive” or
+                            “Delete” the message.
+                        </p>
+                    </li>
+                </ul>
+                <p style="margin-bottom: 0.14in"><b>Archived Messages</b></p>
+                <ul>
+                    <li>
+                        <p style="margin-bottom: 0.14in">
+                            To Archive a message that you
+                            have just listened to, choose “Tasks” then “Archive” from
+                            the Tasks menu.
+                        </p>
+                    </li>
+                </ul>
+                <ul>
+                    <li>
+                        <p style="margin-bottom: 0.14in">
+                            To listen to an Archived
+                            message, press the “Archive” button from the home page then Play
+                            your selected message by simply choosing the message.
+                        </p>
+                    </li>
+                </ul>
+                <p style="margin-bottom: 0.14in"><b>Settings Options</b></p>
+                <ul>
+                    <li>
+                        <p style="margin-bottom: 0.14in">
+                            Press the “Settings” button
+                            in the upper right of the home page to view Settings. Displayed will
+                            be the username of the account in use, LIFE Line Help, Terms of
+                            Service, the Privacy Policy and My Settings.
+                        </p>
+                    </li>
+                    <li>
+                        <p style="margin-bottom: 0.14in">
+                            Press “My Settings” to see
+                            the name of your upline 6,000 for 6 Trip qualifier, to turn on/off
+                            new message notifications or to take a profile picture that will be
+                            attached to your messages.
+                        </p>
+                    </li>
+                    <li>
+                        <p style="margin-bottom: 0.14in">
+                            To take a picture, press “Take
+                            New Picture” and the camera will appear.  Take a picture and
+                            either “Retake”, or “Use Photo” when you’re happy with the
+                            picture.  Click Save Settings when complete.
+                        </p>
+                    </li>
+                </ul>
+
+
+            </div>
+        </div>
+
+    </div>
+    <div data-role="page" id="Privacy">
+        <div class="header" data-role="header" data-position="fixed" data-fullscreen="false" data-id="myheader">
+            <a href="index.html#landingpage" data-role="button" data-icon="arrow-l" class="ui-btn-left" data-transition="slide" data-direction="reverse" data-mini="false">Back</a>
+            <div class="headerlogo"></div>
+        </div>
+        <div data-role="content" class="content">
+            <div style="width: 100%; padding-bottom: 35px;">
+                <div class="headertext" id="Div42">Privacy Policy ...<span id="Span3"></span><a href="#popupMessages" data-rel="popup" data-role="button" data-inline="true" data-transition="pop" data-icon="info" data-theme="a" data-iconpos="notext"></a></div>
+                <div data-role="popup" id="Div43" class="ui-content" data-overlay-theme="a" data-theme="d" style="max-width: 350px;">
+                    <a href="#" data-rel="back" data-role="button" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+                    <div id="Div44"></div>
+                </div>
+            </div>
+            <div style="clear: both;"></div>
+            <div>
+
+
+                <p class="western" align="JUSTIFY" style="margin-bottom: 0.06in; line-height: 100%">
+                    <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt">Living
+Intentionally For Excellence, LLC (referred to herein as “LIFE”
+or</font></font><font face="Arial, sans-serif"><font size="2" style="font-size: 10pt"><i>
+</i></font></font><font face="Arial, sans-serif"><font size="2" style="font-size: 10pt">the
+"Company") created this Privacy Policy to give you
+confidence as you visit and use our Websites or Mobile Applications,
+and to demonstrate its commitment to fair information practices and
+to the protection of privacy.</font></font>
+                </p>
+                <p class="western" style="margin-bottom: 0.06in; line-height: 100%">
+                    <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt">This
+Privacy Policy is only applicable to this Website and Mobile
+Application, and not to any Third-Party Websites or Mobile
+Applications, which may have data collection, storage and use
+practices and policies that differ materially from this Privacy
+Policy. For additional information, see the section concerning
+Third-Party Websites or Mobile Applications, below.</font></font>
+                </p>
+                <p class="western" style="margin-bottom: 0.06in; line-height: 100%">
+                    <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt">BY
+USING THE WEBSITE OR MOBILE APPLICATION, YOU REPRESENT AND WARRANT
+THAT YOU HAVE READ AND UNDERSTOOD, AND AGREE TO THE TERMS OF, THIS
+PRIVACY POLICY. IF YOU DO NOT UNDERSTAND OR DO NOT AGREE TO BE BOUND
+BY THIS PRIVACY POLICY, YOU MUST IMMEDIATELY LEAVE THE WEBSITE OR
+MOBILE APPLICATION.</font></font>
+                </p>
+                <p class="western" style="margin-bottom: 0.06in; line-height: 100%">
+                    <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt">Each
+time you use the Website or Mobile Application, the then-current
+version of this Privacy Policy will apply. Accordingly, each time you
+use the Website or Mobile Application you should check the date of
+this Privacy Policy (which appears at the end) and review any changes
+since the last time you visited the Website or Mobile Application.
+For additional information, see the section concerning Updates and
+Changes to Privacy Policy, below.</font></font>
+                </p>
+                <p class="western" style="margin-bottom: 0in; line-height: 100%">
+                    <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt"><b>1.
+CHILDREN'S PRIVACY</b></font></font>
+                </p>
+                <p class="western" style="margin-bottom: 0.06in; line-height: 100%">
+                    <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt">The
+Website or Mobile Application is not directed to children under the
+age of 13. LIFE does not solicit or knowingly collect personally
+identifiable information from children under the age of 13. If LIFE
+obtains actual knowledge that it has collected personally
+identifiable information from a child under the age of 13, LIFE will
+delete such information from its database. Because LIFE does not
+knowingly collect personally identifiable information from children
+under the age of 13, LIFE does not use or disclose such information
+to third parties. LIFE has designed this Privacy Policy to comply
+with the Children's Online Privacy Act (COPPA).</font></font>
+                </p>
+                <p class="western" style="margin-bottom: 0in; line-height: 100%">
+                    <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt"><b>2.
+INFORMATION COLLECTION PRACTICES</b></font></font>
+                </p>
+                <ol>
+                    <li>
+                        <p class="western" style="margin-bottom: 0in; line-height: 100%">
+                            <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt"><b>Traffic
+	Data.</b></font></font><font face="Arial, sans-serif"><font size="2" style="font-size: 10pt">&nbsp;</font></font><font face="Arial, sans-serif"><font size="2" style="font-size: 10pt">Like
+	most website or mobile application operators, LIFE automatically
+	gathers information of the sort that browsers automatically make
+	available, including: (i) IP addresses; (ii) domain servers; (iii)
+	types of devices accessing the Website or Mobile Application; and
+	(iv) types of Web browsers accessing the Website (collectively
+	"Traffic Data"). Traffic Data is anonymous information
+	that does not personally identify you.</font></font>
+                        </p>
+                    </li>
+                    <li>
+                        <p class="western" style="margin-bottom: 0in; line-height: 100%">
+                            <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt"><b>Cookies.</b></font></font><font face="Arial, sans-serif"><font size="2" style="font-size: 10pt">&nbsp;</font></font><font face="Arial, sans-serif"><font size="2" style="font-size: 10pt">A
+	"Cookie" is a string of information that a website stores
+	on a user's computer, and that the user's browser provides to the
+	website each time the user submits a query to the website. The
+	purpose of a Cookie is to identify the user as a unique user of the
+	Website but not to gather personal information about the user. LIFE
+	uses Cookies to customize your experience on the Website to your
+	interests, to ensure that you do not see the same informational
+	messages repeatedly, and to store your username so you do not have
+	to re-enter it each time you visit the Website. Overall, cookies are
+	safe, as they only identify your computer to customize your Web
+	experience. Most browsers automatically accept cookies, but you can
+	usually adjust your settings to notify you of cookie placement
+	requests, refuse certain cookies, or decline cookies completely. If
+	you turn off cookies, you assume all responsibility for any
+	resulting loss of functionality. For additional information on
+	LIFE's uses of Cookies, see the section concerning Information Use
+	and Disclosure Practices/Traffic Data and Information Gathered Using
+	Cookies, below.</font></font>
+                        </p>
+                    </li>
+                    <li>
+                        <p class="western" style="margin-bottom: 0in; line-height: 100%">
+                            <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt"><b>Personal
+	Information.</b></font></font><font face="Arial, sans-serif"><font size="2" style="font-size: 10pt">&nbsp;</font></font><font face="Arial, sans-serif"><font size="2" style="font-size: 10pt">For
+	you to use certain Services, you may be asked to provide LIFE
+	certain information that identifies you ("Personal
+	Information"). Personal Information includes, without
+	limitation: (1) "Contact Data" (such as your name, mailing
+	address and e-mail address); (2) "Demographic Data" (such
+	as your age, gender, profession, education level, relationship
+	status, religious affiliation, country, state, city and likes and
+	dislikes,); and (3) "Financial Data" (such as your
+	credit/debit card number and expiration date). In each case, you
+	will be asked to provide Personal information; the Website or Mobile
+	Application will not gather it surreptitiously. LIFE may supplement
+	the Personal Information you provide with additional Personal
+	Information gathered from public sources or from third-parties
+	(e.g., consumer reporting agencies) who may lawfully provide such
+	information to LIFE. You are under no obligation to provide Personal
+	Information, with the caveat that your refusal to do so may prevent
+	you from using certain features and services available on the
+	Website or Mobile Application.</font></font>
+                        </p>
+                    </li>
+                    <li>
+                        <p class="western" style="margin-bottom: 0in; line-height: 100%">
+                            <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt"><b>Information
+	you Make Public on the Website or Mobile Application.</b></font></font><font face="Arial, sans-serif"><font size="2" style="font-size: 10pt">&nbsp;</font></font><font face="Arial, sans-serif"><font size="2" style="font-size: 10pt">The
+	Website or Mobile Application may contain features (e.g. public
+	profiles, forums, and message boards) that permit you to upload,
+	post, transmit, display, perform or distribute content, information
+	or other material, including your Personal Information. Any
+	information that you choose to disclose by means of such features
+	becomes public information over which LIFE is unable to exercise
+	control. You should exercise caution when deciding to disclose your
+	Personal Information by means of such features, and you agree to
+	assume all responsibility for doing so.</font></font>
+                        </p>
+                    </li>
+                    <li>
+                        <p class="western" style="margin-bottom: 0in; line-height: 100%">
+                            <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt"><b>Rank
+	and Sales Volume Information.</b></font></font><font face="Arial, sans-serif"><font size="2" style="font-size: 10pt">&nbsp;</font></font><font face="Arial, sans-serif"><font size="2" style="font-size: 10pt">As
+	a Member in LIFE's direct selling business, you may advance in rank,
+	enroll other Members, and/or generate sales of LIFE's products and
+	services. LIFE will gather and maintain data on your rank, sales
+	volume and sales history, your downline sales organization, and
+	other information and data relevant to your sales and business
+	building activity. This information will be made available to your
+	upline Members through their Member Back-Offices.</font></font>
+                        </p>
+                    </li>
+                </ol>
+                <p class="western" style="margin-bottom: 0in; line-height: 100%">
+                    <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt"><b>3.
+INFORMATION USE AND DISCLOSURE PRACTICES</b></font></font>
+                </p>
+                <ol>
+                    <li>
+                        <p class="western" style="margin-bottom: 0in; line-height: 100%">
+                            <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt"><b>Traffic
+	Data and Information Gathered Using Cookies.</b></font></font><font face="Arial, sans-serif"><font size="2" style="font-size: 10pt">&nbsp;</font></font><font face="Arial, sans-serif"><font size="2" style="font-size: 10pt">LIFE
+	analyzes Traffic Data and information gathered using Cookies to help
+	LIFE better understand who is using the Website and how they are
+	using it. By identifying patterns and trends in usage, LIFE is able
+	to better design the Website to improve your experience, and to
+	serve you more relevant and interesting content. From time to time,
+	LIFE may release Traffic Data and information gathered using Cookies
+	in the aggregate, such as by publishing a report on trends in the
+	usage of the Website. LIFE does not attempt to link information
+	gathered using Cookies to Personal Information.</font></font>
+                        </p>
+                    </li>
+                    <li>
+                        <p class="western" style="margin-bottom: 0in; line-height: 100%">
+                            <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt"><b>Personal
+	Information</b></font></font>
+                        </p>
+                        <ol type="i">
+                            <li>
+                                <p class="western" style="margin-bottom: 0in; line-height: 100%">
+                                    <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt"><b>Generally.</b></font></font><font face="Arial, sans-serif"><font size="2" style="font-size: 10pt">&nbsp;</font></font><font face="Arial, sans-serif"><font size="2" style="font-size: 10pt">LIFE
+		uses your Contact Data to send you information about LIFE, LIFE's
+		products and services, LIFE's marketing and sales, your orders of
+		LIFE's products and services, your independent business, and the
+		LIFE direct selling opportunity. LIFE uses your Financial Data to
+		bill you. LIFE uses your Demographic Data to customize and tailor
+		your experience on the Websites and Mobile Applications. As with
+		Traffic Data and information gathered using Cookies, from time to
+		time LIFE may release Demographic Data in the aggregate, such as by
+		publishing a report on trends in the usage of this Website or
+		Mobile Applications.</font></font>
+                                </p>
+                            </li>
+                            <li>
+                                <p class="western" style="margin-bottom: 0in; line-height: 100%">
+                                    <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt"><b>Disclosure
+		Practices.</b></font></font><font face="Arial, sans-serif"><font size="2" style="font-size: 10pt">&nbsp;</font></font><font face="Arial, sans-serif"><font size="2" style="font-size: 10pt">Except
+		under the following circumstances and otherwise as set forth in
+		this Privacy Policy, LIFE will keep your Personal Information
+		private and will not sell it to or share it with third parties.</font></font>
+                                </p>
+                            </li>
+                        </ol>
+                    </li>
+                </ol>
+                <ul>
+                    <li>
+                        <p class="western" style="margin-bottom: 0in; line-height: 100%">
+                            <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt">Disclosure
+	in Connection with Services. LIFE discloses Personal Information to
+	those who help it provide Services, including those who perform
+	technical, administrative and data processing tasks such as hosting,
+	billing, fulfillment, and data storage and security.</font></font>
+                        </p>
+                    </li>
+                    <li>
+                        <p class="western" style="margin-bottom: 0in; line-height: 100%">
+                            <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt">By
+	Law or to Protect Rights. LIFE discloses Personal Information when
+	required to do so by law, or in response to a subpoena or court
+	order, or when LIFE believes in its sole discretion that disclosure
+	is reasonably necessary to protect the property or rights of LIFE,
+	third parties or the public at large.</font></font>
+                        </p>
+                    </li>
+                    <li>
+                        <p class="western" style="margin-bottom: 0in; line-height: 100%">
+                            <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt">Business
+	Transfers; Bankruptcy. LIFE reserves the right to transfer all
+	Personal Information in its possession to a successor organization
+	in the event of a merger, acquisition, or bankruptcy or other sale
+	of all or a portion of LIFE' assets. Other than to the extent
+	ordered by a bankruptcy or other court, the use and disclosure of
+	all transferred Personal Information will be subject to this Privacy
+	Policy, or to a new privacy policy if you are given notice of that
+	new privacy policy and an opportunity to affirmatively opt-out of
+	it. Personal Information submitted or collected after a transfer,
+	however, may be subject to a new privacy policy adopted by LIFE'
+	successor organization.</font></font>
+                        </p>
+                    </li>
+                    <li>
+                        <p class="western" style="margin-bottom: 0in; line-height: 100%">
+                            <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt">Unpaid
+	Accounts. If you fail to pay any balance owed in consideration of
+	Services, LIFE may, as permitted by law, report your Personal
+	Information, including without limitation your unpaid balance, to
+	consumer credit reporting services, collection agencies and others.</font></font>
+                        </p>
+                    </li>
+                    <li>
+                        <p class="western" style="margin-bottom: 0in; line-height: 100%">
+                            <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt">To
+	help Members in LIFE's direct selling program manage their
+	independent businesses, we provide your upline LIFE Members with
+	your name, LIFE rank, as well as data relating to your sales and
+	recruitment activity through the Back-Office to the Website.</font></font>
+                        </p>
+                    </li>
+                </ul>
+                <p class="western" style="margin-left: 0.9in; margin-bottom: 0in; line-height: 100%">
+                    <br>
+                </p>
+                <p class="western" style="margin-bottom: 0in; line-height: 100%">
+                    <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt"><b>4.
+CONSENT TO RECEIVE COMMUNICATIONS FROM LIFE AND OTHER LIFE MEMBERS</b></font></font>
+                </p>
+                <p class="western" style="margin-bottom: 0.06in; line-height: 100%">
+                    <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt">By
+registering with the Website and becoming a Member, you thereby
+consent to receive periodic email, Website Back-Office
+communications, and other communications from LIFE regarding the LIFE
+network marketing program, policies, new product offers, promotions
+and other matters. You further consent to receive periodic email,
+Website Back-Office Communications, and other communications from
+other LIFE Members. If you desire not to receive e-mails, you may
+opt-out by following the unsubscribe instructions within each e-mail
+communication or submit your request to
+lifesupport@life-leadership-home.com.</font></font>
+                </p>
+                <p class="western" style="margin-bottom: 0in; line-height: 100%">
+                    <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt"><b>5.
+SECURITY OF PERSONAL INFORMATION</b></font></font>
+                </p>
+                <p class="western" style="margin-bottom: 0.06in; line-height: 100%">
+                    <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt">LIFE
+has implemented and maintains reasonable security procedures and
+practices to protect against the unauthorized access, use,
+modification, destruction or disclosure of your Personal Information.</font></font>
+                </p>
+                <p class="western" style="margin-bottom: 0in; line-height: 100%">
+                    <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt"><b>6.
+LOST OR STOLEN INFORMATION</b></font></font>
+                </p>
+                <p class="western" style="margin-bottom: 0.06in; line-height: 100%">
+                    <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt">You
+must promptly notify us if your credit, banking, other financial
+information, user name or password is lost, stolen or used without
+permission. In such an event, we will remove that credit card number,
+bank account information, other financial institution information,
+user name or password from your account.</font></font>
+                </p>
+                <p class="western" style="margin-bottom: 0in; line-height: 100%">
+                    <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt"><b>7.
+USER ABILITY TO ACCESS, UPDATE, AND CORRECT PERSONAL INFORMATION</b></font></font>
+                </p>
+                <p class="western" style="margin-bottom: 0.06in; line-height: 100%">
+                    <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt">LIFE
+wants your Personal Information to be complete and accurate. By using
+the Website or Mobile Application, you represent and warrant that all
+information you provide on any registration form or otherwise in
+connection with your use of the Website or Mobile Application and
+Services will be complete and accurate, and that you will update that
+information as necessary to maintain its completeness and accuracy.
+To confirm the completeness and accuracy of, or make changes to, your
+Personal Information, visit your Back Office. Through your Back
+Office you may review and update your Personal Information.</font></font>
+                </p>
+                <p class="western" style="margin-bottom: 0in; line-height: 100%">
+                    <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt"><b>8.
+THIRD-PARTY WEBSITES AND MOBILE APPLICATIONS</b></font></font>
+                </p>
+                <p class="western" style="margin-bottom: 0.06in; line-height: 100%">
+                    <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt">LIFE
+neither owns nor controls Third-Party Websites or Mobile
+Applications. Accordingly, Third-Party Websites or Mobile
+Applications are under no obligation to comply with this Privacy
+Policy except with respect to Personal Information provided directly
+to them by LIFE. Before visiting or providing Personal Information to
+a Third-Party Website or Mobile Application, you should inform
+yourself of the privacy policies and practices (if any) of that
+Third-Party Website or Mobile Application, and should take those
+steps necessary to, in your discretion, protect your privacy.</font></font>
+                </p>
+                <p class="western" style="margin-bottom: 0in; line-height: 100%">
+                    <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt"><b>9.
+PROMOTIONAL ACTIVITIES</b></font></font>
+                </p>
+                <p class="western" style="margin-bottom: 0.06in; line-height: 100%">
+                    <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt">From
+time to time, LIFE may conduct contests, giveaways and other
+promotions (collectively, "Promotional Activities"). Any
+information submitted in connection with Promotional Activities will
+be treated in accordance with this Privacy Policy. From time to time,
+LIFE may also ask you to participate in surveys designed to help LIFE
+improve the Websites or Mobile Applications, its products, services,
+or the LIFE network marketing program. Any Personal Information
+provided to LIFE in connection with any survey will be used only in
+relation to that survey, and might be disclosed to third parties not
+bound by this Privacy Policy only in aggregated form.</font></font>
+                </p>
+                <p class="western" style="margin-bottom: 0in; line-height: 100%">
+                    <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt"><b>10.
+UPDATES AND CHANGES TO PRIVACY POLICY</b></font></font>
+                </p>
+                <p class="western" style="margin-bottom: 0.06in; line-height: 100%">
+                    <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt">Although
+most changes are likely to be minor, LIFE reserves the right, at any
+time and without notice, to add to, update, change or modify this
+Privacy Policy, simply by posting such update, change or modification
+on this page. Any such addition, update, change or modification will
+be posted on the Website or Mobile Application 30 days prior to the
+effective date of the amendment(s). Each time you use the Website or
+Mobile Application, the then-current version of this Privacy Policy
+will apply. Accordingly, each time you use the Website or Mobile
+Application, you should check the date of this Privacy Policy (which
+appears at the end) and review any changes since the last time you
+used the Website or Mobile Application. Unless LIFE obtains your
+express consent, any revised Privacy Policy will apply only to
+information collected after the effective date of such revised
+Privacy Policy, and not to information collected under any earlier
+Privacy Policy.</font></font>
+                </p>
+                <p class="western" style="margin-bottom: 0.14in">
+                    <br>
+                    <br>
+                </p>
+
+            </div>
+        </div>
+
+    </div>
+    <div data-role="page" id="terms">
+        <div class="header" data-role="header" data-position="fixed" data-fullscreen="false" data-id="myheader">
+            <a href="index.html#landingpage" data-role="button" data-icon="arrow-l" class="ui-btn-left" data-transition="slide" data-direction="reverse" data-mini="false">Back</a>
+            <div class="headerlogo"></div>
+        </div>
+        <div data-role="content" class="content">
+            <div style="width: 100%; padding-bottom: 35px;">
+                <div class="headertext" id="Div45">Terms of Service ...<span id="Span4"></span><a href="#popupMessages" data-rel="popup" data-role="button" data-inline="true" data-transition="pop" data-icon="info" data-theme="a" data-iconpos="notext"></a></div>
+                <div data-role="popup" id="Div46" class="ui-content" data-overlay-theme="a" data-theme="d" style="max-width: 350px;">
+                    <a href="#" data-rel="back" data-role="button" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+                    <div id="Div47"></div>
+                </div>
+            </div>
+            <div style="clear: both;"></div>
+            <div id="Div48">
+
+                <p class="western" style="margin-bottom: 0.06in; line-height: 100%">
+                    <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt">Living
+Intentionally For Excellence, LLP (referred to herein as "LIFE",
+"we", "us" and "our") owns and operates
+this website and or mobile application.  Your use of this site or
+mobile application is subject to the following terms and conditions.</font></font>
+                </p>
+                <p class="western" style="margin-bottom: 0in; line-height: 100%">
+                    <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt"><b>1.
+Consent:</b></font></font>
+                </p>
+                <p class="western" style="margin-bottom: 0in; line-height: 100%">
+                    <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt"><b>PLEASE
+READ THESE TERMS OF USE CAREFULLY BEFORE USING THIS SITE OR MOBILE
+APPLICATION. BY USING THIS SITE OR MOBILE APPLICATION, YOU AGREE TO
+THESE TERMS OF USE. IF YOU DO NOT ACCEPT THESE TERMS OF USE, DO NOT
+USE THIS SITE OR MOBILE APPLICATION.</b></font></font><font face="Arial, sans-serif"><font size="2" style="font-size: 10pt">&nbsp;</font></font><font face="Arial, sans-serif"><font size="2" style="font-size: 10pt">You
+acknowledge that these Terms of Use are supported by reasonable and
+valuable consideration, the receipt and sufficiency of which are
+hereby acknowledged. Without limiting the generality of the
+foregoing, you acknowledge that such consideration includes your use
+of the Site or Mobile Application and receipt of data, materials and
+information available at or through the Site or Mobile Application,
+the possibility of our use or display of your Submissions (as defined
+in Section 10 below) and the possibility of the publicity and
+promotion from our use or display of your Submissions.</font></font>
+                </p>
+                <p class="western" style="margin-bottom: 0in; line-height: 100%">
+                    <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt"><b>2.
+Additional Terms:</b></font></font>
+                </p>
+                <p class="western" style="margin-bottom: 0.06in; line-height: 100%">
+                    <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt">Note
+that special terms apply to some services offered on the Site or
+Mobile Application, such as subscription-based services, product
+purchases, and rules for particular contests or sweepstakes or other
+features or activities. These terms are posted in connection with the
+applicable service. Any such terms are in addition to these Terms of
+Use and, in the event of a conflict, prevail over these Terms of Use.</font></font>
+                </p>
+                <p class="western" style="margin-bottom: 0in; line-height: 100%">
+                    <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt"><b>3.
+Modification:</b></font></font>
+                </p>
+                <p class="western" style="margin-bottom: 0.06in; line-height: 100%">
+                    <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt">We
+reserve the right to modify or otherwise update these Terms of Use at
+any time and you agree to be bound by such modifications, updates and
+revisions. You should visit this page from time to time to review the
+current terms. We may change the Site or Mobile Application or delete
+Content (as defined in Section 4 below) or features of this Site or
+Mobile Application at any time, in any way, for any or no reason at
+our discretion.</font></font>
+                </p>
+                <p class="western" style="margin-bottom: 0in; line-height: 100%">
+                    <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt"><b>4.
+Copyright:</b></font></font>
+                </p>
+                <p class="western" style="margin-bottom: 0.06in; line-height: 100%">
+                    <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt">All
+information, materials, functions and other content (including
+Submissions as defined in Section 10 below) provided on this Site or
+Mobile Application (collectively "Content"), such as text,
+graphics, images, etc., is our property or the property of our
+licensors and is protected by US and international copyright laws.
+The collection, arrangement and assembly of all content on this Site
+or Mobile Application is our exclusive property and is protected by
+US and international copyright laws. Except as stated herein or as
+otherwise provided in an express authorization from us, no material
+from the Site or Mobile Application may be copied, reproduced,
+republished, uploaded, posted, transmitted or distributed in any way.
+Any unauthorized use of any material contained in this Site or Mobile
+Application is strictly prohibited.</font></font>
+                </p>
+                <p class="western" style="margin-bottom: 0in; line-height: 100%">
+                    <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt"><b>5.
+Trademarks:</b></font></font>
+                </p>
+                <p class="western" style="margin-bottom: 0.06in; line-height: 100%">
+                    <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt">Unless
+otherwise noted, the trademarks, service marks, trade dress, trade
+names, and logos (collectively "Trademarks") used and
+displayed on this Site or Mobile Application are our registered and
+unregistered Trademarks and the Trademarks of our licensors. Nothing
+on this Site or Mobile Application should be construed as granting,
+by implication, estoppel or otherwise, any license or right to use
+any Trademark displayed on the Site or Mobile Application. Our
+Trademarks and those of our licensors may not be used in connection
+with any product or service that is not ours, in any manner that is
+likely to cause confusion among customers, or in any manner that
+disparages or discredits us.</font></font>
+                </p>
+                <p class="western" style="margin-bottom: 0in; line-height: 100%">
+                    <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt"><b>6.
+Back Offices:</b></font></font>
+                </p>
+                <p class="western" style="margin-bottom: 0.06in; line-height: 100%">
+                    <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt">Access
+to the Back Office is limited to those LIFE Members who have been
+granted such access by LIFE and is controlled through use of a
+username and password. You agree that you will maintain the
+confidentiality of your username and password and will not disclose
+either your username or your password to any other person or entity.
+You acknowledge that you are solely responsible for all activity at
+the Back Office that is conducted under your username and password.
+You agree to promptly notify us of any unauthorized use of your
+username, password, or any other breach of security that you become
+aware of involving or relating to the Back Office.</font></font>
+                </p>
+                <p class="western" style="margin-bottom: 0.06in; line-height: 100%">
+                    <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt">You
+acknowledge that access to and use of the Back Office by you is
+granted only if any applicable Back Office fees, if any are required,
+have been paid by you to LIFE. Should you fail to pay any such fees
+when due, LIFE reserves the right to terminate your access to the
+Back Office. You further acknowledge that the fee(s) required for
+access and use of the Back Office may be modified or changed by LIFE
+at any time at its sole discretion and shall become effective no less
+than 30 days after LIFE has notified you of such change or
+modification. Notification of changes or modifications shall be given
+to you by electronic mail to your email address on file and/or by
+posting to the Back Office. Your continued use of or access of the
+Back Office shall constitute your acceptance of any such change or
+modification.</font></font>
+                </p>
+                <p class="western" style="margin-bottom: 0.06in; line-height: 100%">
+                    <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt">In
+order to access and use the Back Office you must setup an account.
+You agree to provide, maintain and update true, accurate, current and
+complete information about yourself as prompted by our registration
+processes. You shall not impersonate any person or entity or
+misrepresent your identity or affiliation with any person or entity,
+including using another person's username, password or other account
+information, or another person's name, likeness, voice, image or
+photograph. You also agree to promptly notify us of any unauthorized
+use of your username, password, other account information, or any
+other breach of security that you become aware of involving or
+relating to the Back Office.</font></font>
+                </p>
+                <p class="western" style="margin-bottom: 0.06in; line-height: 100%">
+                    <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt">We
+may suspend or terminate your account and your ability to use the
+Back Office or any portion thereof for failure to comply with these
+Terms of Use or any special items related to a particular service,
+for infringing copyright, or for any other reason whatsoever.</font></font>
+                </p>
+                <p class="western" style="margin-bottom: 0in; line-height: 100%">
+                    <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt"><b>7.
+Use of Site </b></font></font><font face="Arial, sans-serif"><font size="2" style="font-size: 10pt"><b>or
+Mobile Application</b></font></font><font face="Arial, sans-serif"><font size="2" style="font-size: 10pt"><b>
+and Content:</b></font></font>
+                </p>
+                <p class="western" style="margin-bottom: 0.06in; line-height: 100%">
+                    <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt">We
+grant you a limited license to access and make personal use of the
+Site or Mobile Application and the Content, subject to these Terms of
+Use. Neither this Site or Mobile Application nor any portion of this
+Site or Mobile Application or any Content may be reproduced,
+duplicated, copied, sold, resold or otherwise exploited for any
+commercial purpose that is not expressly permitted by us in writing,
+except that where the Site or Mobile Application is configured to
+enable the download of particular Content, you may download one copy
+of such Content to a single computer for your personal, noncommercial
+home use only, provided that you: (a) keep intact all copyright and
+other proprietary notices, (b) make no modifications to the Content,
+and (c) do not use the Content in a manner that suggests an
+association with any of our products, services, or brands. We reserve
+the right to refuse services, and/or cancel orders at our discretion
+if we believe that user conduct violates applicable laws or is
+harmful to our interests.</font></font>
+                </p>
+                <p class="western" style="margin-bottom: 0.06in; line-height: 100%">
+                    <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt">In
+the event that we offer downloads of software from this Site or
+Mobile Application and you download such software, the software,
+including any files, images incorporated in or generated by the
+software, and data accompanying the software (collectively the
+"Software") are licensed to you by us or third party
+licensors for your personal, noncommercial home use only. We do not
+transfer title to the Software to you. You may not distribute or
+otherwise exploit the Software or decompile, reverse engineer,
+disassemble or otherwise reduce the Software to a human-readable
+form.</font></font>
+                </p>
+                <p class="western" style="margin-bottom: 0in; line-height: 100%">
+                    <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt"><b>8.
+Linking:</b></font></font>
+                </p>
+                <p class="western" style="margin-bottom: 0.06in; line-height: 100%">
+                    <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt">Links
+to third party web sites may be provided on this Site or Mobile
+Application. If so, they are provided solely as a convenience to you.
+If you use such links, you will leave this Site or Mobile
+Application. We have not reviewed all such third party sites (if any)
+and do not control and are not responsible for any of these web sites
+and their content. We do not endorse or make any representations
+about such web sites or any information or materials found there, or
+any results that may be obtained from using them. If you access any
+third party web sites linked from this Site or Mobile Application,
+you do so at your own risk.</font></font>
+                </p>
+                <p class="western" style="margin-bottom: 0.06in; line-height: 100%">
+                    <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt">No
+hyperlinks to this Site are permitted.</font></font>
+                </p>
+                <p class="western" style="margin-bottom: 0in; line-height: 100%">
+                    <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt"><b>9.
+Claim of Copyright Infringement:</b></font></font>
+                </p>
+                <p class="western" style="margin-bottom: 0.06in; line-height: 100%">
+                    <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt">We
+respect the intellectual property rights of others. If you believe
+that your copyrighted property has been copied in any way that
+constitutes copyright infringement, or your intellectual property
+rights have been otherwise violated, please provide our copyright
+agent the information specified below. Please note that this
+procedure is exclusively for notifying us that your copyrighted
+material has been infringed. To be effective, the notification must
+be a written communication that includes the following:</font></font>
+                </p>
+                <ul>
+                    <li>
+                        <p class="western" style="margin-bottom: 0in; line-height: 100%">
+                            <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt">A
+	physical or electronic signature of the person authorized to act on
+	behalf of the owner of the copyright interest;</font></font>
+                        </p>
+                    </li>
+                    <li>
+                        <p class="western" style="margin-bottom: 0in; line-height: 100%">
+                            <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt">A
+	description of the copyrighted work that you claim has been
+	infringed upon;</font></font>
+                        </p>
+                    </li>
+                    <li>
+                        <p class="western" style="margin-bottom: 0in; line-height: 100%">
+                            <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt">A
+	description of where the material that you claim is infringing is
+	located on the Site or Mobile Application;</font></font>
+                        </p>
+                    </li>
+                    <li>
+                        <p class="western" style="margin-bottom: 0in; line-height: 100%">
+                            <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt">Your
+	physical address, telephone number and email address;</font></font>
+                        </p>
+                    </li>
+                    <li>
+                        <p class="western" style="margin-bottom: 0in; line-height: 100%">
+                            <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt">A
+	statement by you that you have a good faith belief that the disputed
+	use is not authorized by the copyright owner, its agent or by the
+	law; and</font></font>
+                        </p>
+                    </li>
+                    <li>
+                        <p class="western" style="margin-bottom: 0in; line-height: 100%">
+                            <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt">A
+	statement by you, made under penalty of perjury, that the above
+	information is accurate and that you are the copyright owner or
+	authorized to act on the copyright owner's behalf.</font></font>
+                        </p>
+                    </li>
+                    <li>
+                        <p class="western" style="margin-bottom: 0.06in; line-height: 100%">
+                            <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt">We
+	may give you notice that we have removed or disabled access to
+	certain material by means of a general notice on the Site or Mobile
+	Application, electronic mail to a user's e-mail address in our
+	records, or by written communication sent by first-class mail to
+	your physical address in our records. If you receive such a notice,
+	you may provide counter-notification in writing to our copyright
+	agent that includes the information below. To be effective, the
+	counter-notification must be a written communication that contains
+	the following:</font></font>
+                        </p>
+                    </li>
+                    <li>
+                        <p class="western" style="margin-bottom: 0in; line-height: 100%">
+                            <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt">Your
+	physical or electronic signature;</font></font>
+                        </p>
+                    </li>
+                    <li>
+                        <p class="western" style="margin-bottom: 0in; line-height: 100%">
+                            <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt">Identification
+	of the material that has been removed or to which access has been
+	disabled, and the location at which the material appeared before it
+	was removed or access to it was disabled;</font></font>
+                        </p>
+                    </li>
+                    <li>
+                        <p class="western" style="margin-bottom: 0in; line-height: 100%">
+                            <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt">A
+	statement from you, under the penalty of perjury, that you have a
+	good faith belief that the material was removed or disabled as a
+	result of a mistake or misidentification of the material to be
+	removed or disabled; and</font></font>
+                        </p>
+                    </li>
+                    <li>
+                        <p class="western" style="margin-bottom: 0in; line-height: 100%">
+                            <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt">Your
+	name, physical address and telephone number, and a statement that
+	you consent to the jurisdiction of a Federal Court for the judicial
+	district in which your physical address is located, or if your
+	physical address is outside of the United States, for any judicial
+	district in which LIFE may be found, and that you will accept
+	service of process from the person who provided notification of
+	allegedly infringing material or an agent of such person.</font></font>
+                        </p>
+                    </li>
+                </ul>
+                <p class="western" style="margin-left: 0.25in; margin-bottom: 0in; line-height: 100%">
+                    <br>
+                </p>
+                <p class="western" style="margin-bottom: 0.06in; line-height: 100%">
+                    <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt">Our
+Copyright Agent for notice of claims of copyright infringement on
+this Site or Mobile Application can be reached as follows:</font></font>
+                </p>
+                <p class="western" style="margin-bottom: 0.06in; line-height: 100%">
+                    <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt">By
+Mail: LIFE, Inc.<br>Attn: Copyright Agent<br>4072 Market Place<br>Flint,
+MI 48462</font></font>
+                </p>
+                <p class="western" style="margin-bottom: 0.06in; line-height: 100%">
+                    <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt">By
+Email: corpsupport@life-leadership-home.com</font></font>
+                </p>
+                <p class="western" style="margin-bottom: 0in; line-height: 100%">
+                    <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt"><b>10.
+Submissions:</b></font></font>
+                </p>
+                <p class="western" style="margin-bottom: 0.06in; line-height: 100%">
+                    <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt">For
+purposes of these Terms of Use, the word "Submissions"
+means text, messages, ideas, concepts, suggestions, artwork,
+photographs, drawings, videos, audiovisual works, your and/or other
+persons' names, likenesses, voices, usernames, profiles, actions,
+appearances, performances and/or other biographical information or
+material, and/or other similar materials that you submit, post,
+upload, embed, display, communicate or otherwise distribute on or
+through this Site or Mobile Application.</font></font>
+                </p>
+                <p class="western" style="margin-bottom: 0.06in; line-height: 100%">
+                    <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt">We
+are always pleased to receive your comments, suggestions, and
+Submissions regarding this Site or Mobile Application, our products
+and services, and our opportunity. If you transmit to us, post, or
+upload any Submissions to or through this Site or Mobile Application,
+you grant us and our affiliates a non-exclusive, royalty-free,
+perpetual and irrevocable right to use, reproduce, modify, adapt,
+publish, translate, distribute and incorporate such Submissions and
+the names identified on the Submissions throughout the world in any
+media for any and all commercial and non-commercial purposes.</font></font>
+                </p>
+                <p class="western" style="margin-bottom: 0.06in; line-height: 100%">
+                    <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt">By
+communicating a Submission to us, you represent and warrant that the
+Submission and your communication thereof conform to the Rules of
+Conduct set forth in Section 13 below and all other requirements of
+these Terms of Use and that you own or have the necessary rights,
+licenses, consents and permissions, without the need for any
+permission from or payment to any other person or entity, to exploit,
+and to authorize us to exploit, such Submission in all manners
+contemplated by these Terms of Use. You agree that you shall not post
+or transmit to or from this Site or Mobile Application any unlawful,
+threatening, libelous, defamatory, obscene, scandalous, inflammatory,
+pornographic or profane material, or any other material that could
+give rise to any civil or criminal liability under the law. See
+Section 13 below.</font></font>
+                </p>
+                <p class="western" style="margin-bottom: 0in; line-height: 100%">
+                    <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt"><b>11.
+Accounts:</b></font></font>
+                </p>
+                <p class="western" style="margin-bottom: 0.06in; line-height: 100%">
+                    <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt">Some
+services on this Site or Mobile Application permit or require you to
+create an account to participate in or to secure additional benefits.
+You agree to provide, maintain and update true, accurate, current and
+complete information about yourself as prompted by our registration
+processes. You shall not impersonate any person or entity or
+misrepresent your identity or affiliation with any person or entity,
+including using another person's username, password or other account
+information, or another person's name, likeness, voice, image or
+photograph. You also agree to promptly notify us of any unauthorized
+use of your username, password, other account information, or any
+other breach of security that you become aware of involving or
+relating to this Site or Mobile Application.</font></font>
+                </p>
+                <p class="western" style="margin-bottom: 0.06in; line-height: 100%">
+                    <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt">We
+may suspend or terminate your account and your ability to use the
+Site or Mobile Application or any portion thereof for failure to
+comply with these Terms of Use or any special items related to a
+particular service, for infringing copyright, or for any other reason
+whatsoever.</font></font>
+                </p>
+                <p class="western" style="margin-bottom: 0in; line-height: 100%">
+                    <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt"><b>12.
+Public Forums and Communication:</b></font></font>
+                </p>
+                <p class="western" style="margin-bottom: 0.06in; line-height: 100%">
+                    <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt">"Public
+Forum" means an area or feature offered as part of this Site or
+Mobile Application that offers the opportunity for users to
+distribute Submissions for viewing by one or more Site or Mobile
+Application users, including, but not limited to, a chat area,
+message board, instant messaging, mobile messaging, social community
+environment, profile page, conversation page, blog, or e-mail
+function.</font></font>
+                </p>
+                <p class="western" style="margin-bottom: 0.06in; line-height: 100%">
+                    <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt">You
+acknowledge that Public Forums and features offered therein are for
+public and not private communications, and you have no expectation of
+privacy with regard to any Submission to a Public Forum. We cannot
+guarantee the security of any information you disclose through any of
+these media; you make such disclosures at your own risk.</font></font>
+                </p>
+                <p class="western" style="margin-bottom: 0.06in; line-height: 100%">
+                    <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt">You
+are and shall remain solely responsible for the Submissions you
+distribute on or through the Site or Mobile Application under your
+username or otherwise by you in any Public Forum and for the
+consequences of submitting and posting the same. We have no duty to
+monitor any Public Forum.</font></font>
+                </p>
+                <p class="western" style="margin-bottom: 0.06in; line-height: 100%">
+                    <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt">You
+should be skeptical about information provided by others, and you
+acknowledge that the use of any Submission posted in any Public Forum
+is at your own risk. We are not responsible for, and we do not
+endorse, the opinions, advice or recommendations posted or sent by
+users in any Public Forum and we specifically disclaim any and all
+liability in connection therewith.</font></font>
+                </p>
+                <p class="western" style="margin-bottom: 0.06in; line-height: 100%">
+                    <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt">We
+owe you no obligation, and therefore may refuse to post, deliver,
+remove, modify or otherwise use or take any action with respect to
+any Submissions that you make to the Site or Mobile Application.</font></font>
+                </p>
+                <p class="western" style="margin-bottom: 0in; line-height: 100%">
+                    <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt"><b>13.
+Rules of Conduct:</b></font></font>
+                </p>
+                <p class="western" style="margin-bottom: 0.06in; line-height: 100%">
+                    <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt">The
+following Rules of Conduct apply to the Site or Mobile Application.
+By using the Site or Mobile Application, you agree that you will not
+upload, post, or otherwise distribute to the Site or Mobile
+Application any Submission that:</font></font>
+                </p>
+                <ul>
+                    <li>
+                        <p class="western" style="margin-bottom: 0in; line-height: 100%">
+                            <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt">is
+	defamatory, abusive, harassing, threatening, or an invasion of a
+	right of privacy of another person; (b) is bigoted, hateful, or
+	racially or otherwise offensive; (c) is violent, vulgar, obscene,
+	pornographic, or otherwise sexually explicit; or (d) otherwise harms
+	or can reasonably be expected to harm any person or entity;</font></font>
+                        </p>
+                    </li>
+                    <li>
+                        <p class="western" style="margin-bottom: 0in; line-height: 100%">
+                            <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt">is
+	illegal or encourages or advocates illegal activity or the
+	discussion of illegal activities with the intent to commit them,
+	including a Submission that is, or represents an attempt to engage
+	in, child pornography, stalking, sexual assault, fraud, trafficking
+	in obscene or stolen material, drug dealing and/or drug use,
+	harassment, theft, or conspiracy to commit any criminal activity;</font></font>
+                        </p>
+                    </li>
+                    <li>
+                        <p class="western" style="margin-bottom: 0in; line-height: 100%">
+                            <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt">infringes
+	or violates any right of a third party including: (a) copyright,
+	patent, trademark, trade secret or other proprietary or contractual
+	rights; (b) right of privacy (specifically, you must not distribute
+	another person's personal information of any kind without their
+	express permission) or publicity; or (c) any confidentiality
+	obligation;</font></font>
+                        </p>
+                    </li>
+                    <li>
+                        <p class="western" style="margin-bottom: 0in; line-height: 100%">
+                            <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt">is
+	commercial, business related or advertises or offers to sell any
+	products services or otherwise (whether or not for profit), or
+	solicits others (including solicitations for contributions or
+	donations);</font></font>
+                        </p>
+                    </li>
+                    <li>
+                        <p class="western" style="margin-bottom: 0in; line-height: 100%">
+                            <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt">contains
+	a virus or other harmful component, or otherwise tampers with,
+	impairs or damages the Site or Mobile Application or any connected
+	network, or otherwise interferes with any person or entity's use or
+	enjoyment of the Site or Mobile Application; or</font></font>
+                        </p>
+                    </li>
+                    <li>
+                        <p class="western" style="margin-bottom: 0in; line-height: 100%">
+                            <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt">does
+	not generally pertain to the designated topic or theme of the
+	relevant Public Forum; (b) violates any specific restrictions
+	applicable to a Public Forum, including its age restrictions and
+	procedures; or (c) is antisocial, disruptive, or destructive,
+	including "flaming", "spamming", "flooding",
+	"trolling", and "griefing", as those terms are
+	commonly understood and used on the Internet.</font></font>
+                        </p>
+                    </li>
+                </ul>
+                <p class="western" style="margin-left: 0.3in; margin-bottom: 0in; line-height: 100%">
+                    <br>
+                </p>
+                <p class="western" style="margin-bottom: 0.06in; line-height: 100%">
+                    <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt">We
+cannot and do not assure that other users are or will be complying
+with the foregoing Rules of Conduct or any other provisions of these
+Terms of Use, and, as between you and us, you hereby assume all risk
+of harm or injury resulting from any such lack of compliance.</font></font>
+                </p>
+                <p class="western" style="margin-bottom: 0in; line-height: 100%">
+                    <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt"><b>14.
+Removal of Submissions:</b></font></font>
+                </p>
+                <p class="western" style="margin-bottom: 0.06in; line-height: 100%">
+                    <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt">We
+reserve the right, but disclaim any obligation or responsibility, to
+(a) refuse to post or communicate or remove any Submission from the
+Site or Mobile Application that violates these Terms of Use and (b)
+identify any user to third parties, and/or disclose to third parties
+any Submission or personally identifiable information when we believe
+in good faith that such identification or disclosure will either (i)
+facilitate compliance with laws, including, for example, compliance
+with a court order or subpoena, or (ii) help to enforce these Terms
+of Use and/or protect the safety or security of any person or
+property, including the Site or Mobile Application. Moreover, we
+retain all rights to remove Submissions at any time for any reason or
+no reason whatsoever.</font></font>
+                </p>
+                <p class="western" style="margin-bottom: 0in; line-height: 100%">
+                    <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt"><b>15.
+International:</b></font></font>
+                </p>
+                <p class="western" style="margin-bottom: 0.06in; line-height: 100%">
+                    <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt">The
+Site or Mobile Application is intended for viewing and use in the
+United States. If this Site or Mobile Application is viewed
+internationally, you are responsible for compliance with applicable
+local laws. We do not intend to provide our products or services
+outside the United States.</font></font>
+                </p>
+                <p class="western" style="margin-bottom: 0in; line-height: 100%">
+                    <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt"><b>16.
+Privacy:</b></font></font>
+                </p>
+                <p class="western" style="margin-bottom: 0in; line-height: 100%">
+                    <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt">LIFE
+respects your privacy and the privacy of other visitors to the Site
+or Mobile Application. To learn about our privacy practices and
+policies, please see our</font></font><font face="Arial, sans-serif"><font size="2" style="font-size: 10pt">&nbsp;<a class="western" href="http://www.life-leadership-home.com/PrivacyPolicy.aspx">Privacy
+Policy</a></font></font><font face="Arial, sans-serif"><font size="2" style="font-size: 10pt">.</font></font>
+                </p>
+                <p class="western" style="margin-bottom: 0in; line-height: 100%">
+                    <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt"><b>17.
+Children:</b></font></font>
+                </p>
+                <p class="western" style="margin-bottom: 0.06in; line-height: 100%">
+                    <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt">LIFE
+is committed to the safety of our children. Persons under the age of
+18 may not enroll as LIFE Members or register as customers. Children
+under the age of 13 may not purchase products through any of our
+Websites or Mobile Applications. LIFE does not solicit or knowingly
+collect personally identifiable information from children under the
+age of 13.</font></font>
+                </p>
+                <p class="western" style="margin-bottom: 0in; line-height: 100%">
+                    <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt"><b>18.
+Disclaimer of Warranties:</b></font></font>
+                </p>
+                <p class="western" style="margin-bottom: 0.06in; line-height: 100%">
+                    <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt">ALL
+CONTENT INCLUDED IN OR AVAILABLE THROUGH THIS SITE OR MOBILE
+APPLICATION (THE "CONTENT") IS PROVIDED "AS IS"
+AND "AS AVAILABLE" AND WITHOUT WARRANTIES OF ANY KIND. TO
+THE FULLEST EXTENT PERMISSIBLE PURSUANT TO APPLICABLE LAW, WE
+DISCLAIM ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING, BUT NOT
+LIMITED TO, IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+PARTICULAR PURPOSE, ACCURACY, COMPLETENESS, AVAILABILITY, SECURITY,
+COMPATABILITY, AND NONINFRINGEMENT. WE DO NOT WARRANT THAT THE
+CONTENT IS ACCURATE, ERROR-FREE, RELIABLE OR CORRECT, THAT THIS SITE
+OR MOBILE APPLICATION WILL BE AVAILABLE AT ANY PARTICULAR TIME OR
+LOCATION, THAT ANY DEFECTS OR ERRORS WILL BE CORRECTED, OR THAT THE
+SITE OR MOBILE APPLICATION OR THE SERVERS THAT MAKE SUCH CONTENT
+AVAILABLE ARE FREE OF VIRUSES OR OTHER HARMFUL COMPONENTS. THIS SITE
+OR MOBILE APPLICATION MAY INCLUDE TECHNICAL INACCURACIES OR
+TYPOGRAPHICAL ERRORS. YOU ASSUME THE ENTIRE COST OF ALL NECESSARY
+SERVICING, REPAIR OR CORRECTION. WE DO NOT WARRANT OR MAKE ANY
+REPRSENTAITONS REGARDING THE USE OR THE RESULTS OF THE USE OF ANY
+CONTENT. YOU HEREBY IRREVOCABLY WAIVE ANY CLAIM AGAINST US WITH
+RESPECT TO CONTENT AND ANY CONTENT YOU PROVIDE TO THIRD PARTY SITES
+OR MOBILE APPLICATIONS (INCLUDING CREDIT CARD AND OTHER PERSONAL
+INFORMATION). WE MAY IMPROVE OR CHANGE THE PRODUCTS AND SERVICES
+DESCRIBED IN THIS SITE OR MOBILE APPLICATION AT ANY TIME WITHOUT
+NOTICE. WE ASSUME NO RESPONSIBILITY FOR AND DISCLAIM ALL LIABILITY
+FOR ANY ERRORS OR OMISSIONS IN THIS SITE OR MOBILE APPLICATION OR IN
+OTHER DOCUMENTS WHICH ARE REFERRED TO WITHIN OR LINKED TO THIS SITE
+OR MOBILE APPLICATION. SOME JURISDICTIONS DO NOT ALLOW THE EXCLUSION
+OF IMPLIED WARRANTIES, SO THE ABOVE EXCLUSION MAY NOT APPLY TO YOU.</font></font>
+                </p>
+                <p class="western" style="margin-bottom: 0.06in; line-height: 100%">
+                    <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt">The
+Content of the Site or Mobile Application is not intended to, and
+does not, constitute legal, professional, medical or healthcare
+advice or diagnosis, is not intended to be a substitute for such
+advice, and may not be used for such purposes. Always seek the advice
+of your physician with any questions you may have regarding a medical
+condition. You should not act or refrain from acting on the basis of
+any of the Content included in, or accessible through, the Site or
+Mobile Application without seeking the appropriate legal, medical, or
+other professional advice. Reliance on any information appearing on
+the Site or Mobile Application is strictly at your own risk.</font></font>
+                </p>
+                <p class="western" style="margin-bottom: 0.06in; line-height: 100%">
+                    <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt">The
+Site or Mobile Application may contain the opinions and views of
+other users. Given the interactive nature of the Site or Mobile
+Application, we cannot endorse, guarantee, or be responsible for the
+accuracy, efficacy, or veracity of any content generated by other
+users.</font></font>
+                </p>
+                <p class="western" style="margin-bottom: 0in; line-height: 100%">
+                    <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt"><b>19.
+Limitation of Liabilities:</b></font></font>
+                </p>
+                <p class="western" style="margin-bottom: 0.06in; line-height: 100%">
+                    <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt">UNDER
+NO CIRCUMSTANCES, INCLUDING NEGLIGENCE, SHALL WE, OUR LICENSORS OR
+LICENSEES, OR ANY OF THE FOREGOING ENTITIES' RESPECTIVE RESELLERS,
+DISTRIBUTORS, SERVICE PROVIDERS OR SUPPLIERS, BE LIABLE TO YOU OR ANY
+OTHER PERSON OR ENTITY FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL
+OR CONSEQUENTIAL DAMAGES, INCLUDING LOST PROFITS, PERSONAL INJURY
+(INCLUDING DEATH) AND PROPERTY DAMAGE OF ANY NATURE WHATSOEVER, THAT
+RESULT FROM (A) THE USE OF, OR THE INABILITY TO USE, THIS SITE OR
+MOBILE APPLICATION OR CONTENT, OR (B) THE CONDUCT OR ACTIONS, WHETHER
+ONLINE OR OFFLINE, OF ANY OTHER USER OF THE SITE OR MOBILE
+APPLICATION OR ANY OTHER PERSON OR ENTITY, EVEN IF WE HAVE BEEN
+ADVISED OF THE POSSIBILITY OF SUCH DAMAGES. IN NO EVENT SHALL OUR
+TOTAL LIABILITY TO YOU FOR ALL DAMAGES, LOSSES AND CAUSES OF ACTION
+WHETHER IN CONTRACT, TORT (INCLUDING NEGLIGENCE) OR OTHERWISE EXCEED
+THE AMOUNT PAID BY YOU, IF ANY, OR $100 (WHICHEVER IS LESS) FOR
+ACCESSING OR PARTICIPATING IN ANY ACTIVITY RELATED TO THE SITE OR
+MOBILE APPLICATION. MOREOVER, UNDER NO CIRCUMSTANCES SHALL WE, OUR
+LICENSORS OR LICENSEES, OR ANY OF THE FOREGOING ENTITIES' RESPECTIVE
+RESELLERS, DISTRIBUTORS, SERVICE PROVIDERS OR SUPPLIERS, BE HELD
+LIABLE FOR ANY DELAY OR FAILURE IN PERFORMANCE RESULTING DIRECTLY OR
+INDIRECTLY FROM AN ACT OF FORCE MAJEURE OR CAUSES BEYOND OUR OR THEIR
+REASONABLE CONTROL.</font></font>
+                </p>
+                <p class="western" style="margin-bottom: 0.06in; line-height: 100%">
+                    <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt">WE
+MAY TERMINATE YOUR FURTHER ACCESS TO THE SITE OR MOBILE APPLICATION
+OR CHANGE THE SITE OR MOBILE APPLICATION OR DELETE CONTENT OR
+FEATURES IN ANY WAY, AT ANY TIME AND FOR ANY REASON OR NO REASON.</font></font>
+                </p>
+                <p class="western" style="margin-bottom: 0.06in; line-height: 100%">
+                    <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt">THE
+LIMITATIONS, EXCLUSIONS AND DISCLAIMERS IN THIS SECTION AND ELSEWHERE
+IN THESE TERMS OF USE APPLY TO THE MAXIMUM EXTENT PERMITTED BY
+APPLICABLE LAW.</font></font>
+                </p>
+                <p class="western" style="margin-bottom: 0in; line-height: 100%">
+                    <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt"><b>20.
+Governing Law, Jurisdiction and Venue:</b></font></font>
+                </p>
+                <p class="western" style="margin-bottom: 0.06in; line-height: 100%">
+                    <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt">This
+                        Site and Mobile Application are created and controlled by us in the
+                        State of Michigan. The laws of the State of Michigan govern these
+                        Terms of Use, without giving effect to any principles of conflicts of
+                        laws. You agree that any action at law or in equity arising out of or
+                        relating to these Terms of Use or the Site or Mobile Application
+                        shall be filed, and that venue properly lies, only in the State or
+                        Federal courts located in the United States District Court for the
+                        Eastern District of Michigan or in the Michigan state court in
+                        Genesee County, State of Michigan, and you hereby consent and submit
+                        to the personal jurisdiction of such courts for the purposes of
+litigating any such action.</font></font>
+                </p>
+                <p class="western" style="margin-bottom: 0in; line-height: 100%">
+                    <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt"><b>21.
+General Provisions:</b></font></font>
+                </p>
+                <p class="western" style="margin-bottom: 0.06in; line-height: 100%">
+                    <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt">We
+make no representations that the Content on the Site or Mobile
+Application is appropriate or available for use in any particular
+location. Those who choose to access the Site or Mobile Application
+do so on their own initiative and are responsible for compliance with
+all applicable laws including any applicable local laws.</font></font>
+                </p>
+                <p class="western" style="margin-bottom: 0.06in; line-height: 100%">
+                    <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt">If
+any provision of these Terms of Use shall be unlawful, void or for
+any reason unenforceable, then that provision shall be deemed
+severable from these Terms of Use and shall not affect the validity
+and enforceability of any remaining provisions.</font></font>
+                </p>
+                <p class="western" style="margin-bottom: 0.06in; line-height: 100%">
+                    <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt">No
+waiver of any provision of these Terms of Use by us shall be deemed a
+further or continuing waiver of such provision or any other
+provision, and our failure to assert any right or provision under
+these Terms of Use shall not constitute a waiver of such right or
+provision.</font></font>
+                </p>
+                <p class="western" style="margin-bottom: 0.06in; line-height: 100%">
+                    <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt">YOU
+AGREE THAT ANY CAUSE OF ACTION YOU MAY HAVE ARISING OUT OF OR RELATED
+TO THESE TERMS OF USE OR THE SITE OR MOBILE APPLICATION MUST COMMENCE
+WITHIN ONE (1) YEAR AFTER THE CAUSE OF ACTION ACCRUES; OTHERWISE,
+SUCH CAUSE OF ACTION SHALL BE PERMANENTLY BARRED.</font></font>
+                </p>
+                <p class="western" style="margin-bottom: 0.06in; line-height: 100%">
+                    <font face="Arial, sans-serif"><font size="2" style="font-size: 10pt">Supply
+of goods, services and software through the Site or Mobile
+Application is subject to United States export control and economic
+sanctions requirements. By acquiring any such items through the Site
+or Mobile Application, you represent and warrant that your
+acquisition comports with and your use of the item will comport with
+those requirements. Without limiting the foregoing, you may not
+acquire goods, services or software through the Site or Mobile
+Application if: (a) you are in, under the control of, or a national
+or resident of Cuba, Iran, North Korea, Sudan or Syria or if you are
+on the U.S. Treasury Department's Specially Designated Nationals List
+or the U.S. Commerce Department's Denied Persons List, Unverified
+List or Entity List, or (b) you intend to supply the acquired goods,
+services or software to Cuba, Iran, North Korea, Sudan or Syria (or a
+national or resident of one of these countries) or to a person on the
+Specially Designated Nationals List, Denied Persons List, Unverified
+List or Entity List.</font></font>
+                </p>
+                <p class="western" style="margin-bottom: 0.14in">
+                    <br>
+                    <br>
+                </p>
+
+
+            </div>
+        </div>
+
+    </div>
+    <!-- administration page -->
+    <div data-role="page" id="admin">
+        <div class="header" data-role="header" data-position="fixed" data-fullscreen="false" data-id="myheader">
+            <div class="headerlogo"></div>
+        </div>
+        <div data-role="content" class="content" data-scroll="true">
+            <div id="Div10" style="width: 100%;">
+                <span>...Administration</span><a href="#" data-rel="popup" data-role="button" data-inline="true" data-transition="pop" data-icon="info" data-theme="a" data-iconpos="notext"></a>
+            </div>
+        </div>
+        <div style="clear: both;"></div>
+        <!-- <div> -->
+        <div class="ui-grid-a" id="topNav">
+            <div class="ui-block-a">
+                <select name="flip-mini" id="flip-mini" data-role="slider" data-mini="true">
+                    <option value="off">Off</option>
+                    <option value="on">On</option>
+                </select>
+                <span>Tree (editing):</span>
+            </div>
+            <div class="ui-block-b">
+                <select name="flip-mini" id="Select1" data-role="slider" data-mini="true">
+                    <option value="off">Off</option>
+                    <option value="on">On</option>
+                </select>
+                <span>List (viewing):</span>
+            </div>
+        </div>
+
+
+        <div class="ui-grid-a">
+            <div class="ui-block-a">
+                <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true" class="ui-corner-all ui-controlgroup ui-controlgroup-horizontal ui-mini">
+                    <div class="ui-controlgroup-controls">
+                        <div class="ui-checkbox">
+                            <input type="checkbox" name="checkbox-6" id="checkbox-6" class="custom"><label for="checkbox-6" data-corners="true" data-shadow="false" data-iconshadow="true" data-wrapperels="span" data-theme="c" data-mini="true" class="ui-btn ui-mini ui-corner-left ui-checkbox-off ui-btn-up-c"><span class="ui-btn-inner ui-corner-left"><span class="ui-btn-text">Gr</span></span></label>
+                        </div>
+                        <div class="ui-checkbox">
+                            <input type="checkbox" name="checkbox-7" id="checkbox-7" class="custom"><label for="checkbox-7" data-corners="true" data-shadow="false" data-iconshadow="true" data-wrapperels="span" data-theme="c" data-mini="true" class="ui-btn ui-mini ui-checkbox-off ui-btn-up-c"><span class="ui-btn-inner"><span class="ui-btn-text"><em>Ind</em></span></span></label>
+                        </div>
+                        <div class="ui-checkbox">
+                            <input type="checkbox" name="checkbox-8" id="checkbox-8" class="custom"><label for="checkbox-8" data-corners="true" data-shadow="false" data-iconshadow="true" data-wrapperels="span" data-theme="c" data-mini="true" class="ui-btn ui-mini ui-corner-right ui-controlgroup-last ui-checkbox-off ui-btn-up-c"><span class="ui-btn-inner ui-corner-right ui-controlgroup-last"><span class="ui-btn-text">Ind+Gr</span></span></label>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="ui-block-b">
+                Go
+            </div>
+        </div>
+    </div>
+    <!--/ admin page-->
+
+
+    <!-- play messages page -->
+    <div data-role="page" id="msgPlay">
+        <div class="header" data-role="header" data-position="fixed" data-fullscreen="false">
+            <a href="#" data-role="button" data-rel="back" data-icon="arrow-l" class="ui-btn-left" id="btnHeaderBackDetailsPlay">Back</a>
+            <div class="headerlogo"></div>
+
+        </div>
+
+        <div data-role="content" class="content" data-scroll="true">
+
+            <div id="Div8" style="width: 100%;">
+                <div class="headertext" id="Div9">...Play Message<img src="images/TALK_i.png" id="Img5" data-mini="true" /></div>
+            </div>
+            <div id="wrapperMsgDetails">
+                <div id="wrapperMsgFrom">
+                    <h2></h2>
+                </div>
+                <h4 id="msgIDActive" style="display: none;"></h4>
+                <div id="wrapperMsgDttm">
+                    <h6></h6>
+                </div>
+            </div>
+
+        </div>
+        <div style="width: 100%;">
+            <!-- <div class="headertext" id="messagesheader">...<span id="messageheadertext"></span><img src="images/TALK_i.png" id="Img4" data-mini="true" /></div> -->
+        </div>
+        <div style="clear: both;"></div>
+    </div>
+
+    <!--/play message page-->
+
+    <!--Pass up-->
+    <div data-role="page" id="passup">
+        <div class="header" data-role="header" data-position="fixed" data-fullscreen="false">
+            <a href="#" data-role="button" data-rel="back" data-icon="arrow-l" class="ui-btn-left" data-mini="false">Back</a>
+            <div class="headerlogo"></div>
+        </div>
+        <div data-role="content" class="content" data-scroll="true">
+            <div id="Div11" style="width: 100%;" class="headertextpass">
+                <div class="headertext" id="Div12">...Pass Message Up<a href="#popupPassMessageUp" data-rel="popup" data-role="button" data-inline="true" data-transition="pop" data-icon="info" data-theme="a" data-iconpos="notext"></a></div>
+                <div data-role="popup" id="popupPassMessageUp" class="ui-content" data-overlay-theme="a" data-theme="d" style="max-width: 350px;">
+                    <a href="#" data-rel="back" data-role="button" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+                    <p>Forward a message and include a message tag if you would like to your upline.  Your upline is defined as the upline Member with a current 6 or 12 rank that is higher than yours.  For example if you are a Leader 6, the message will be sent to your immediate upline Leader 12 or above.</p>
+                </div>
+            </div>
+            <div style="clear: both;"></div>
+            <div data-role="fieldcontain">
+                <label>Your upline: </label>
+                <span id="spanUplineNamePassUp"></span>
+            </div>
+            <div id="Div4" style="width: 100%;">
+                <!--<label for="txtPassUp">Please type a message tag:</label>-->
+                <textarea id="txtPassUp" rows="5" placeholder="Message tag"></textarea>
+            </div>
+
+            <div style="clear: both;"></div>
+        </div>
+        <div data-role="footer" data-position="fixed" data-tap-toggle="false">
+            <div class="ui-grid-solo">
+                <div class="ui-block-a"><a href="#" data-role="button" id="btnPassUpPage" data-icon="double-angle-up">Pass</a></div>
+            </div>
+        </div>
+
+    </div>
+    <!--/pass up>
+
+    <!--Pass down-->
+    <div data-role="page" id="passdown">
+
+        <div class="header" data-role="header" data-position="fixed" data-fullscreen="false">
+            <a href="#" data-role="button" data-rel="back" data-icon="arrow-l" class="ui-btn-left" data-mini="false">Back</a>
+            <div class="headerlogo"></div>
+        </div>
+        <div data-role="content" class="content" data-scroll="true">
+            <div id="Div13" style="width: 100%;" class="headertextpass">
+                <div class="headertext" id="Div14">...Pass Message Down<a href="#popupPassMessageDown" data-rel="popup" data-role="button" data-inline="true" data-transition="pop" data-icon="info" data-theme="a" data-iconpos="notext"></a></div>
+                <div data-role="popup" id="popupPassMessageDown" class="ui-content" data-overlay-theme="a" data-theme="d" style="max-width: 350px;">
+                    <a href="#" data-rel="back" data-role="button" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+                    <p>Forward a message to one of your downline distribution lists and include a message tag if you wish.</p>
+                </div>
+            </div>
+            <div>
+                <label for="distrolist">Pick your distribution list:</label>
+                <select id="distrolist" multiple="multiple" data-native-menu="false" data-icon="grid">
+                    <option value="1">All</option>
+                </select>
+            </div>
+            <div>
+                <!--<label for="txtPassDown">Please type a message tag:</label>-->
+                <textarea id="txtPassDown" cols="40" rows="8" placeholder="Message tag"></textarea>
+            </div>
+
+            <div style="clear: both;"></div>
+        </div>
+        <div data-role="footer" data-position="fixed" data-tap-toggle="false">
+            <div class="ui-grid-solo">
+                <div class="ui-block-a"><a href="#" id="btnPassDownPage" data-role="button" data-icon="double-angle-down">Pass</a></div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--Pass to specific team#-->
+    <div data-role="page" id="passtonumber">
+        <div class="header" data-role="header" data-position="fixed" data-fullscreen="false">
+            <div id="loadingMessage" style="color: #00b8d3;">Loading</div>
+
+            <a href="#" data-role="button" data-rel="back" data-icon="arrow-l" class="ui-btn-left" data-mini="false">Back</a>
+            <div class="headerlogo"></div>
+        </div>
+        <div data-role="content" class="content" data-scroll="true">
+            <div id="Div15" style="width: 100%;" class="headertextpass">
+                <div class="headertext" id="Div16">...Pass to an Individual<a href="#popupPassToIndividual" data-rel="popup" data-role="button" data-inline="true" data-transition="pop" data-icon="info" data-theme="a" data-iconpos="notext"></a></div>
+                <div data-role="popup" id="popupPassToIndividual" class="ui-content" data-overlay-theme="a" data-theme="d" style="max-width: 350px;">
+                    <a href="#" data-rel="back" data-role="button" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+                    <p>Pass a message to a specific Member using the name search or enter the LIFE # and add a text message tag along with it.</p>
+                </div>
+            </div>
+            <div style="clear: both;"></div>
+            <div>
+                <span id="clearable">
+                    <!--<label for="txtPassToNumber">Type a name or team# of a user you want to pass it to:</label>-->
+                    <label for="txtPassToNumber" id="lblPassToNumberError" class="errormessage"></label>
+
+                    <span id="icon_clear" class="ui-icon ui-icon-circle-triangle-s"></span>
+                    <input type="hidden" id="custNo">
+                </span>
+            </div>
+            <div style="clear: both;"></div>
+            <div style="padding-top: 15px;">
+                <ul data-autodividers="true" data-role="listview" data-inset="true" data-filter="true" data-filter-reveal="true" data-filter-placeholder="Type a name or Life Line# of a user you want to pass it to..." id="txtPassToNumber" data-filter-theme="a"></ul>
+            </div>
+            <div>
+                <!-- <label for="txtPassToNumberTag">Please type a message tag:</label>-->
+                <textarea id="txtPassToNumberTag" cols="40" rows="8" placeholder="Message tag"></textarea>
+            </div>
+
+            <div style="clear: both;"></div>
+        </div>
+
+        <div data-role="footer" data-position="fixed" data-tap-toggle="false">
+            <div class="ui-grid-solo">
+                <div class="ui-block-a"><a href="#" id="btnPassToNumber" data-role="button" data-icon="user">Pass</a></div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!--Record Audio -->
+    <div data-role="page" id="pageRecordMessage">
+        <div class="header" data-role="header" data-position="fixed" data-fullscreen="false" data-id="myheader" data-tap-toggle="false">
+            <a href="#" data-role="button" data-rel="back" data-icon="arrow-l" class="ui-btn-left" data-mini="false">Back</a>
+            <div class="headerlogo"></div>
+        </div>
+        <div data-role="content" class="content" data-scroll="true">
+            <div id="Div20" style="width: 100%;" class="headertextpass">
+                <div class="headertext" id="Div21">...Select Destination<a href="#popupSelectDestination" data-rel="popup" data-role="button" data-inline="true" data-transition="pop" data-icon="info" data-theme="a" data-iconpos="notext"></a></div>
+                <div data-role="popup" id="popupSelectDestination" class="ui-content" data-overlay-theme="a" data-theme="d" style="max-width: 350px;">
+                    <a href="#" data-rel="back" data-role="button" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+                    <p>The Message Tag field allows the user the send a text message along with a voice message.  The “Send To” drop down list provides the message destination options, which depending on your LIFE rank includes Upline, Downline and to an individual LIFE Member.  The Upline option will send the message to your immediate upline, who is currently one LIFE rank higher.  For example, if you are a Leader 6, a message upline would go to your 1st upline Leader 12 or above. </p>
+                </div>
+            </div>
+            <div style="clear: both;" class="clear"></div>
+            <div id="iscrollwrapperrecord">
+
+
+                <div id="dMessageTag">
+                    <!-- <label for="txtPassDown">Message tag</label>-->
+                    <textarea id="messageTag" cols="40" rows="8" placeholder="Message tag"></textarea>
+
+                </div>
+                <div style="clear: both;"></div>
+
+                <div id="dRecordMessageDestPicker" data-role="fieldcontain">
+                    <label for="ddlRecordMessagePass">Send To:</label>
+                    <select id="ddlRecordMessagePass">
+                        <option value="0" id="hideupline">Upline</option>
+                        <option value="1" id="hidedownline">Downline</option>
+                        <option value="2" id="hideindv">Individual or LIFE #</option>
+                    </select>
+
+                </div>
+                <div id="dPickDistroList" data-role="fieldcontain">
+                    <label for="ddlDistroListRecordMessage">Pick your distribution list:</label>
+                    <select id="ddlDistroListRecordMessage" multiple="multiple" data-native-menu="false" data-icon="grid">
+                        <option value="1">All</option>
+                    </select>
+                </div>
+                <div style="clear: both;"></div>
+                <div id="dPassToTeamNumRecordMessage" data-role="fieldcontain">
+                    <label for="txtPassToNumberRecordMessage">Type name or a Life Line# of a user you want to pass it to:</label>
+                    <label for="txtPassToNumberRecordMessage" id="Label1" class="errormessage"></label>
+                    <span id="Span1" class="ui-icon ui-icon-circle-triangle-s"></span>
+                    <input type="hidden" id="Hidden1">
+                </div>
+                <div style="clear: both;"></div>
+                <div style="padding-top: 15px;" id="divtxtPassToNumberRecordMessage">
+                    <ul data-autodividers="true" data-role="listview" data-inset="true" data-filter="true" data-filter-reveal="true" data-filter-placeholder="Search users..." id="txtPassToNumberRecordMessage" data-filter-theme="a"></ul>
+                </div>
+                <div style="clear: both;"></div>
+
+                <div id="Div19" style="width: 100%; margin-top: 20px;" class="headertextpass">
+                    <div class="headertext" id="divRecordMessage">...Record Message<a href="#popupRecordMessage" data-rel="popup" data-role="button" data-inline="true" data-transition="pop" data-icon="info" data-theme="a" data-iconpos="notext"></a></div>
+                    <div data-role="popup" id="popupRecordMessage" class="ui-content" data-overlay-theme="a" data-theme="d" style="max-width: 350px;">
+                        <a href="#" data-rel="back" data-role="button" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+                        <p>After selecting the message destination, record up to a 90 second message by hitting the Start button.  Once finished, hit the Stop button and if you want to review before sending hit the Play button.  Then simply hit the Send button to deliver your message.</p>
+                    </div>
+                </div>
+                <div style="clear: both;" class="clear"></div>
+                <div id="divRecordControls">
+                    <div data-scroll="true" id="wrapperPageRecord">
+                        <div id="wrapperRecordControlButtons" style="text-align: center;">
+
+                            <div data-role="controlgroup" data-type="horizontal">
+                                <a href="#" id="btnStartStopRecording" data-role="button" data-icon="circle" class="ui-icon-nodisc">Start</a>
+                                <a href="#" id="btnStopRecording" class="ui-disabled" data-role="button" data-icon="stop">Stop</a>
+                                <a href="#" id="btnPlayMessage" class="ui-disabled" data-role="button" data-icon="play">Play</a>
+                            </div>
+                        </div>
+                        <div id="wrapperRecordingProgress">
+                            <div id="audioDisplayRow1" class="rowAudioDisplay">
+                                <div id="containerProgressBar" class="elemDisplay">
+                                    <div id="progressbarBack"></div>
+                                    <div id="progress-bar"></div>
+                                </div>
+                            </div>
+                            <div id="audioDisplayRow2" class="rowAudioDisplay">
+                                <div id="spinner" class="elemDisplay"></div>
+                                <div id="message" class="elemDisplay"></div>
+                                <div id="audio_position" class="elemDisplay"></div>
+                            </div>
+                        </div>
+                        <div style="clear: both;" class="clear"></div>
+                        <div style="text-align: center;">
+
+
+                            <!--<a href="#" id="btnTestVals"  data-role="button" data-icon="delete" data-iconpos="left">test</a>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footerpadding"></div>
+        </div>
+
+        <div data-role="footer" data-position="fixed" data-tap-toggle="false" id="divRecordMessageFooter">
+            <div class="ui-grid-a">
+                <div class="ui-block-a"><a href="#" id="btnAcceptUpload" class="ui-disabled" data-role="button" data-icon="check" data-iconpos="left"><span id="btnAcceptUploadText">Send</span></a></div>
+                <div class="ui-block-b"><a href="#" id="btnDeleteMessage" class="ui-disabled" data-role="button" data-icon="delete" data-iconpos="left">Cancel</a></div>
+            </div>
+        </div>
+    </div>
+    <!--/record audio -->
+
+    <!--message details -->
+    <div data-role="page" id="pageMessageDetail" class="ui-responsive-panel">
+
+        <div class="header" data-role="header" data-position="fixed" data-fullscreen="false" data-id="myheader">
+            <a href="#messages" data-role="button" data-icon="arrow-l" class="ui-btn-left" data-mini="false" data-direction="reverse">Back</a>
+            <div class="headerlogo"></div>
+            <a href="#panelmessagedetails" data-role="button" data-icon="grid" data-iconpos="right" data-inline="true" class="ui-btn-right" data-mini="false">Tasks</a>
+        </div>
+
+        <div data-role="content" class="content" data-scroll="true" id="Div2">
+            <div id="Div1" style="width: 100%;" class="headertextpass">
+                <div class="headertext" id="Div7">...Message Details<a href="#popupMessageDetails" data-rel="popup" data-role="button" data-inline="true" data-transition="pop" data-icon="info" data-theme="a" data-iconpos="notext"></a></div>
+                <div data-role="popup" id="popupMessageDetails" class="ui-content" data-overlay-theme="a" data-theme="d" style="max-width: 350px;">
+                    <a href="#" data-rel="back" data-role="button" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+                    <p>After selecting a message from the Upline, Downline or Archive folders, the message will play immediately plus provide you with who the message is from, as well as the date and time it was sent, and will display all message tags associated with the message and who authored them.  There is a message Pause, Stop and Replay option as well as a Next and Previous message option at the bottom of the screen.  In the upper right corner you will see a Tasks option, which will provide you with a series of additional messaging options including the ability to Archive, Pass, Delete or Replay plus the ability to Mark as New.</p>
+                </div>
+            </div>
+            <div id="iscrollwrappermessagedetails">
+
+
+                <div style="clear: both;" id="divPageMessageDetailMessage"></div>
+                <div data-role="contnrolgroup" data-type="horizontal" style="float: left; padding-top: 15px;">
+                </div>
+
+                <div data-role="controlgroup" data-type="horizontal" style="text-align: center;">
+                    <div data-role="button" class="center-button" data-mini="true" data-icon="forward" id="btnReplyInline">Reply to this message</div>
+                </div>
+                <div style="width: 100%;">
+                    <p>
+                        <label for="labelMessageFrom">From:</label>
+                        <label id="labelMessageFrom">John Doe</label>
+                    </p>
+                    <p>
+                        <label for="labelMessageSentOn">Sent:</label>
+                        <label id="labelMessageSentOn">1/1/2013</label>
+                    </p>
+                </div>
+
+
+
+
+                <div id="divPlayMessage">
+
+
+
+                    <div id="wrapperPlaybackProgress">
+                        <div id="Div3" class="rowAudioDisplay">
+                            <!-- <div id="spinner" class="elemDisplay"></div>     -->
+                            <div id="Div5" class="elemDisplay">
+
+                                <div id="Div17"></div>
+                                <div id="Div18"></div>
+                            </div>
+                        </div>
+                        <div id="Div22" class="rowAudioDisplay">
+                            <div id="Div23" class="elemDisplay"></div>
+                            <div id="Div24" class="elemDisplay"></div>
+                        </div>
+                    </div>
+
+
+                    <div id="Div25" style="text-align: center;">
+                        <div data-role="controlgroup" data-type="horizontal" id="playcontrols">
+                            <a href="#" id="btnPauseMessage" data-role="button"><span id="btnPauseMessageText">Pause</span></a>
+                            <a href="#" id="A2" data-role="button">Replay</a>
+                            <a href="#" id="btnStopMessage" data-role="button">Stop</a>
+                        </div>
+
+                    </div>
+
+                    <!--         <div class="ui-grid-solo" >
+                     
+                </div>-->
+
+                    <div style="clear: both;"></div>
+                </div>
+                <div style="clear: both;"></div>
+                <div style="padding-bottom: 5px; padding-top: 5px;">
+                    <label for="labelMsgTag">Message tag:</label>
+                    <label id="labelMsgTag"></label>
+                </div>
+            </div>
+            <div class="footerpadding"></div>
+        </div>
+
+        <div data-role="footer" data-position="fixed" data-id="myfooter" data-tap-toggle="false">
+
+            <div class="ui-grid-a">
+                <div class="ui-block-a"><a href="#" data-icon="arrow-l" data-role="button" id="btnPrevMessage" data-iconpos="left">Previous</a></div>
+                <div class="ui-block-b"><a href="#" data-icon="arrow-r" data-role="button" id="btnNextMessage" data-iconpos="right">Next</a></div>
+            </div>
+        </div>
+        <div data-role="panel" id="panelmessagedetails" data-theme="a" data-position="right" data-position-fixed="true">
+
+
+            <ul data-role="listview" data-theme="d">
+                <li data-role="list-divider" data-theme="d">Tasks</li>
+                <li data-icon="double-angle-up">
+                    <a href="#passup" id="btnPassUp" data-transition="slide">Pass Up</a>
+                </li>
+
+                <li data-icon="double-angle-down">
+                    <a href="#" id="btnPassDown" data-transition="slide">Pass Down</a>
+                </li>
+                <li data-icon="forward">
+                    <a href="#" id="btnReply" data-transition="slide">Reply</a>
+                </li>
+                <li data-icon="user">
+                    <a href="#passtonumber" id="btnPassToTeamNumber" data-transition="slide">Individual Pass</a>
+                </li>
+                <li data-icon="ok">
+                    <a href="#" id="btnMarkAsUnlistened">Mark as New</a>
+                </li>
+                <li data-icon="book">
+                    <a href="#" id="btnArchiveMessage">Archive</a>
+                </li>
+                <li data-icon="remove">
+                    <a href="#" id="btnDeleteArchive">Delete</a>
+                </li>
+                <li data-role="list-divider" data-theme="d"></li>
+                <li data-icon="angle-right">
+                    <a href="#pageMessageDetail" data-rel="close" data-theme="d" data-mini="true">Close</a>
+                </li>
+            </ul>
+            <div style="padding-top: 20px; text-align: center;">
+            </div>
+        </div>
+    </div>
+
+    <!--    <div data-role="footer"  data-position="fixed" data-id="myfooter">
+            <fieldset class="ui-grid-a">
+                <div class="ui-block-a"><a href="#" data-icon="arrow-l" data-role="button" class="ui-btn-left" id="btnPrevMessage" data-iconpos="left" data-mini="false">Previous</a></div>
+
+                <div class="ui-block-b"><a href="#" data-icon="arrow-r" data-role="button" class="ui-btn-right" id="btnNextMessage" style="float: right;" data-iconpos="right" data-mini="false">Next</a></div>
+            </fieldset>
+        </div>-->
+
+
+
+    <!-- /panel -->
+
+
+    <!--/message detail -->
+
+    <!--reply to page:-->
+    <div data-role="page" id="pagereply">
+        <div class="header" data-role="header" data-position="fixed" data-fullscreen="false">
+            <a href="#pageMessageDetail" data-role="button" data-icon="arrow-l" class="ui-btn-left" data-mini="false" data-direction="reverse" data-transition="slide">Back</a>
+            <div class="headerlogo"></div>
+        </div>
+        <div data-role="content" class="content" data-scroll="true">
+            <div id="Div26" style="width: 100%;" class="headertextpass">
+                <div class="headertext" id="Div27">...Reply To Message<a href="#popupReplyToMessage" data-rel="popup" data-role="button" data-inline="true" data-transition="pop" data-icon="info" data-theme="a" data-iconpos="notext"></a></div>
+                <div data-role="popup" id="popupReplyToMessage" class="ui-content" data-overlay-theme="a" data-theme="d" style="max-width: 350px;">
+                    <a href="#" data-rel="back" data-role="button" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+                    <p>Send a voice and or text reply to a message received.</p>
+                </div>
+            </div>
+
+            <div style="clear: both;"></div>
+            <div data-id="footerreply">
+                <h4 style="text-align: center;">Reply with</h4>
+                <div data-role="navbar" data-iconpos="left">
+                    <ul>
+                        <li><a href="#" data-icon="volume-up" id="btnReplyWithVoice" class="ui-btn-active  ui-state-persist" data-iconpos="left">Voice</a></li>
+                        <li><a href="#" data-icon="font" id="btnReplyWithText" data-iconpos="left">Text</a></li>
+                    </ul>
+                </div>
+                <!-- /navbar -->
+            </div>
+            <div>
+                <textarea id="txtTagReply" rows="5" placeholder="Message tag"></textarea>
+            </div>
+            <div style="clear: both;"></div>
+
+            <div id="divReplyWithVoice" style="display: none;">
+            </div>
+
+
+
+            <div data-role="footer" data-position="fixed" data-tap-toggle="false">
+                <div class="ui-grid-a">
+                    <div class="ui-block-a"><a href="#" class="ui-disabled" data-role="button" id="btnSendReply" data-icon="share-alt">Reply</a></div>
+                    <div class="ui-block-b"><a href="#" id="btnReplyCancel" data-role="button" data-icon="delete" data-iconpos="left">Cancel</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/reply>-->
+
+
+
+    <!--settings to page:-->
+    <div data-role="page" id="pagesettings">
+        <div class="header" data-role="header" data-position="fixed" data-fullscreen="false" data-id="myheader">
+            <a href="#" data-role="button" data-rel="back" data-icon="arrow-l" class="ui-btn-left" data-mini="false">Back</a>
+            <div class="headerlogo"></div>
+        </div>
+        <div data-role="content" class="content" data-scroll="true">
+            <div id="Div28" style="width: 100%;" class="headertextpass">
+                <div class="headertext" id="Div29">...Settings<a href="#popupSettings" data-rel="popup" data-role="button" data-inline="true" data-transition="pop" data-icon="info" data-theme="a" data-iconpos="notext"></a></div>
+                <div data-role="popup" id="popupSettings" class="ui-content" data-overlay-theme="a" data-theme="d" style="max-width: 350px;">
+                    <a href="#" data-rel="back" data-role="button" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+                    <p>Receive text notifications when you have received a new message by turning this option to “Yes”.</p>
+                    <p>Also take a custom picture for your profile using your smart phone device.</p>
+                </div>
+            </div>
+            <div data-role="fieldcontain">
+                <label>Your upline: </label>
+                <span id="spanUplineName"></span>
+            </div>
+            <div data-role="fieldcontain">
+                <label for="flipReceiveNotifications">Receive new message notifications on this device:</label>
+                <select name="flipReceiveNotifications" id="flipReceiveNotifications" data-role="slider">
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </select>
+            </div>
+            <div>
+                <a href="#" id="btnCaptureImage" type="button" data-icon="camera">Take New Picture</a>
+                <img style="display: none; width: 60px; height: 60px;" id="smallImage" src="" />
+            </div>
+            <div>
+                <div data-role="fieldcontain" style="text-align: right">
+                    <label for="imgUserIcon">Your image:</label>
+                    <img src="http://life.rmrdevelopment.com/DesktopModules/TEAMTALKAPP/Images/LL_57.png" id="imgUserIcon" style="width: 60px; height: 60px;" />
+                </div>
+                <input type="hidden" id="imgChanged" value="0" />
+            </div>
+
+
+            <div style="clear: both;"></div>
+        </div>
+        <div data-role="footer" data-position="fixed" data-tap-toggle="false">
+            <div class="ui-grid-solo">
+                <div class="ui-block-a">
+                    <a href="#" data-role="button" id="btnSaveSettings" data-icon="save">Save Settings</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!--/settings page>-->
+
+
+    <!--distros page:-->
+    <div data-role="page" id="pagemanagedistros">
+        <div class="header" data-role="header" data-position="fixed" data-id="myheader" data-fullscreen="false">
+            <a href="#landingpage" data-direction="reverse" data-role="button" data-icon="arrow-l" class="ui-btn-left" data-mini="false">Back</a>
+            <div class="headerlogo"></div>
+        </div>
+        <div data-role="content" class="content" data-scroll="true">
+            <div id="Div30" style="width: 100%;" class="headertextpass">
+                <div class="headertext" id="Div31">...Distribution Lists<a href="#popupDistributionLists" data-rel="popup" data-role="button" data-inline="true" data-transition="pop" data-icon="info" data-theme="a" data-iconpos="notext"></a></div>
+            </div>
+            <div data-role="popup" id="popupDistributionLists" class="ui-content" data-overlay-theme="a" data-theme="d" style="max-width: 350px;">
+                <a href="#" data-rel="back" data-role="button" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+                <p>In addition to the predefined distribution lists that we provide you by Team and Rank, you have ability to create and edit your own distribution lists.  Select the Create option to begin.</p>
+            </div>
+            <div style="clear: both; padding-top: 10px;" id="div32"></div>
+            <div id="divmanagedistrosscroll">
+
+                <ul data-role="listview" data-inset="true" id="ulmanagedistros">
+                </ul>
+
+            </div>
+        </div>
+    </div>
+    <!--/distros page>-->
+
+    <!--distros page:-->
+    <div data-role="page" id="pageeditdistrolist">
+        <div class="header" data-role="header" data-position="fixed" data-fullscreen="false" data-id="myheader">
+            <a href="#" data-role="button" data-rel="back" data-icon="arrow-l" class="ui-btn-left" data-mini="false">Back</a>
+            <div class="headerlogo"></div>
+        </div>
+        <div data-role="content" class="content" data-scroll="true">
+            <div id="Div33" style="width: 100%;" class="headertextpass">
+                <div class="headertext" id="Div34">...Edit List<a href="#popupEditList" data-rel="popup" data-role="button" data-inline="true" data-transition="pop" data-icon="info" data-theme="a" data-iconpos="notext"></a></div>
+            </div>
+            <div data-role="popup" id="popupEditList" class="ui-content" data-overlay-theme="a" data-theme="d" style="max-width: 350px;">
+                <a href="#" data-rel="back" data-role="button" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+                <p>Create a new distribution list by first giving it a name and then add each Member using the Search feature and the Add User button.  You also have the ability to include a downline Member's entire downline so you don't have to add each person individually.  Once a list is created you can edit the Members within the list or delete the list completely.</p>
+            </div>
+            <div style="clear: both; padding-top: 10px;" id="div35"></div>
+            <div id="divEditDistroMessage"></div>
+
+
+            <div>
+                <input type="text" id="txtDistroName" placeholder="Distribution list name..." />
+            </div>
+            <div style="padding-top: 15px;">
+                <label style="padding-bottom: 20px; margin-bottom: 20px;">Add new user</label>
+                <div style="clear: both; padding-top: 20px;" id="div36"></div>
+                <ul data-autodividers="true" data-role="listview" data-inset="true" data-filter="true" data-filter-reveal="true" data-filter-placeholder="Search users..." id="txtDistroUser" data-filter-theme="a"></ul>
+                <input type="hidden" id="Hidden2" />
+                <input type="hidden" id="CanEntireDownline" />
+            </div>
+            <div style="clear: both;"></div>
+            <div>
+                <label>
+                    <input type="checkbox" name="chkBoxAddDownline" data-theme="a" value="1" id="chkBoxAddDownline">add entire downline
+                </label>
+            </div>
+            <div>
+                <a href="#" data-role="button" id="btnAddUserToDistroList">Add User</a>
+            </div>
+            <div data-role="collapsible" data-theme="a" data-content-theme="d" data-collapsed-icon="arrow-d" data-expanded-icon="arrow-u" id="divCollapsibleEditDistroList">
+                <h4>Users in the list:</h4>
+                <div id="divEditListScroll">
+                    <ul data-role="listview" data-inset="true" id="uldistromembers" data-split-icon="delete" data-split-theme="a">
+                    </ul>
+                </div>
+            </div>
+            <div class="footerpadding "></div>
+        </div>
+        <div data-role="footer" data-position="fixed" data-tap-toggle="false">
+            <div class="ui-grid-a">
+                <div class="ui-block-a"><a href="#" data-role="button" id="btnSaveList" data-icon="save">Save</a></div>
+                <div class="ui-block-b"><a href="#" data-role="button" id="btnDeleteList" data-icon="delete">Delete</a></div>
+            </div>
+        </div>
+    </div>
+    <!--/distros page>-->
+
+
+    <!--init page:-->
+    <div data-role="page" id="pagetest">
+        <div class="header" data-role="header" data-position="fixed" data-fullscreen="false">
+            <div class="headerlogo"></div>
+        </div>
+
+        <div data-role="content" class="content" data-scroll="true">
+        </div>
+    </div>
+    <!--/test>-->
+</body>
+</html>

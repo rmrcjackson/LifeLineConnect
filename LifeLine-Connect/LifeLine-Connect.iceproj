@@ -1,0 +1,278 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>6a7cea59-f5c3-474e-a16d-780bd8170e40</ProjectGuid>
+    <ProjectTypeGuids>{070BCB52-5A75-4F8C-A973-144AF0EAFCC9}</ProjectTypeGuids>
+    <AppIdentifier>com.thelifebusiness.LifeLineConnect</AppIdentifier>
+    <ProjectName>LifeLine-Connect</ProjectName>
+    <IsRunnable>true</IsRunnable>
+    <FrameworkVersion>3.0.0</FrameworkVersion>
+    <AndroidPermissions>android.permission.CAMERA;android.permission.VIBRATE;android.permission.ACCESS_COARSE_LOCATION;android.permission.ACCESS_FINE_LOCATION;android.permission.ACCESS_LOCATION_EXTRA_COMMANDS;android.permission.READ_PHONE_STATE;android.permission.INTERNET;android.permission.RECEIVE_SMS;android.permission.RECORD_AUDIO;android.permission.MODIFY_AUDIO_SETTINGS;android.permission.READ_CONTACTS;android.permission.WRITE_CONTACTS;android.permission.WRITE_EXTERNAL_STORAGE;android.permission.ACCESS_NETWORK_STATE;android.permission.ACCOUNT_MANAGER;android.permission.GET_ACCOUNTS;android.permission.MANAGE_ACCOUNTS;android.permission.BROADCAST_STICKY</AndroidPermissions>
+    <CorePlugins>org.apache.cordova.core.device;org.apache.cordova.core.AudioHandler;org.apache.cordova.core.battery-status;org.apache.cordova.core.camera;org.apache.cordova.core.console;org.apache.cordova.core.contacts;org.apache.cordova.core.device;org.apache.cordova.core.device-motion;org.apache.cordova.core.device-orientation;org.apache.cordova.core.dialogs;org.apache.cordova.core.file;org.apache.cordova.core.file-transfer;org.apache.cordova.core.geolocation;org.apache.cordova.core.globalization;org.apache.cordova.core.inappbrowser;org.apache.cordova.core.media-capture;org.apache.cordova.core.network-information;org.apache.cordova.core.splashscreen;org.apache.cordova.core.vibration</CorePlugins>
+    <DeviceOrientations>Portrait;Landscape</DeviceOrientations>
+    <iOSStatusBarStyle>Default</iOSStatusBarStyle>
+    <AndroidHardwareAcceleration>true</AndroidHardwareAcceleration>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <AndroidVersionCode>1</AndroidVersionCode>
+    <BundleVersion>1.0</BundleVersion>
+  </PropertyGroup>
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <OutputPath>bin\Debug\$(DevicePlatform)\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <OutputPath>bin\Release\$(DevicePlatform)\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+  </PropertyGroup>
+  <ItemGroup>
+    <Resource Include="App_Resources\iOS\icon.png" />
+    <Resource Include="App_Resources\iOS\icon@2x.png" />
+    <Resource Include="App_Resources\iOS\icon-72.png" />
+    <Resource Include="App_Resources\iOS\icon-72@2x.png" />
+    <Resource Include="App_Resources\iOS\Icon-Small.png" />
+    <Resource Include="App_Resources\iOS\Icon-Small@2x.png" />
+    <Resource Include="App_Resources\iOS\Icon-Small-50.png" />
+    <Resource Include="App_Resources\iOS\Icon-Small-50@2x.png" />
+    <Resource Include="App_Resources\iOS\Default.png" />
+    <Resource Include="App_Resources\iOS\Default@2x.png" />
+    <Resource Include="App_Resources\iOS\Default-568h@2x.png" />
+    <Resource Include="App_Resources\iOS\Default-Portrait.png" />
+    <Resource Include="App_Resources\iOS\Default-Landscape.png" />
+    <Resource Include="App_Resources\iOS\Default-Portrait@2x.png" />
+    <Resource Include="App_Resources\iOS\Default-Landscape@2x.png" />
+    <Resource Include="App_Resources\iOS\icon-40.png" />
+    <Resource Include="App_Resources\iOS\icon-40@2x.png" />
+    <Resource Include="App_Resources\iOS\icon-60.png" />
+    <Resource Include="App_Resources\iOS\icon-60@2x.png" />
+    <Resource Include="App_Resources\iOS\icon-76.png" />
+    <Resource Include="App_Resources\iOS\icon-76@2x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="App_Resources\Android\drawable-hdpi\icon.png" />
+    <Resource Include="App_Resources\Android\drawable-mdpi\icon.png" />
+    <Resource Include="App_Resources\Android\drawable-ldpi\icon.png" />
+    <Resource Include="App_Resources\Android\drawable-nodpi\splashscreen.9.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="images\btn_administration.jpg" />
+    <Content Include="images\btn_archive.jpg" />
+    <Content Include="images\btn_from_downline.jpg" />
+    <Content Include="images\btn_from_upline.jpg" />
+    <Content Include="images\btn_more_minus.png" />
+    <Content Include="images\btn_more_minus_over.png" />
+    <Content Include="images\btn_new_message.jpg" />
+    <Content Include="images\bubble_pulldown_bg.png" />
+    <Content Include="images\button_background.jpg" />
+    <Content Include="images\button_background_over.png" />
+    <Content Include="images\Chrome-logo-2011-03-16.jpg" />
+    <Content Include="images\iconClose-01.png" />
+    <Content Include="images\iconClose-02.png" />
+    <Content Include="images\more_button.png" />
+    <Content Include="images\more_button_over.png" />
+    <Content Include="images\msgRightDownArrowNew-01.png" />
+    <Content Include="images\msgRightDownArrowNew-02.png" />
+    <Content Include="images\msgRightDownArrowOld-01.png" />
+    <Content Include="images\msgRightDownArrowOld-02.png" />
+    <Content Include="images\msgRightDownArrowOld-03.png" />
+    <Content Include="images\msgTilerOn-01.png" />
+    <Content Include="images\pass_down.png" />
+    <Content Include="images\pass_up.png" />
+    <Content Include="images\play_button.png" />
+    <Content Include="images\play_button_over.png" />
+    <Content Include="images\recordingSpinner-01.gif" />
+    <Content Include="images\recordingSpinner-02.gif" />
+    <Content Include="images\recordingSpinner-03.gif" />
+    <Content Include="images\recordingSpinner-04.gif" />
+    <Content Include="images\recordingSpinner-05.gif" />
+    <Content Include="images\spinnerAutoComplete-01.gif" />
+    <Content Include="images\spinnerAutoComplete-02.gif" />
+    <Content Include="images\spinnerAutoComplete-03.gif" />
+    <Content Include="images\spinnerAutoComplete-04.gif" />
+    <Content Include="images\spinnerAutoComplete-05.gif" />
+    <Content Include="images\spinnerAutoComplete-06.gif" />
+    <Content Include="images\spinnerAutoComplete-07.gif" />
+    <Content Include="images\TALKapp_Landing.png" />
+    <Content Include="images\TALKapp_Landing_on.png" />
+    <Content Include="images\TALK_archive_bubble.jpg" />
+    <Content Include="images\TALK_archive_pulldown.png" />
+    <Content Include="images\TALK_archive_pulldown_bg.png" />
+    <Content Include="images\TALK_bubble-01.png" />
+    <Content Include="images\TALK_bubble.png" />
+    <Content Include="images\TALK_bubble_badgeNew-01.png" />
+    <Content Include="images\TALK_bubble_badgeNew-02.png" />
+    <Content Include="images\TALK_bubble_new1-01.png" />
+    <Content Include="images\TALK_bubble_new1.png" />
+    <Content Include="images\TALK_bubble_new1_pulldown.png" />
+    <Content Include="images\TALK_bubble_new1_pulldown_bottom-01.png" />
+    <Content Include="images\TALK_bubble_new1_pulldown_bottom.png" />
+    <Content Include="images\TALK_bubble_new1_pulldown_middle-01.png" />
+    <Content Include="images\TALK_bubble_new1_pulldown_middle.png" />
+    <Content Include="images\TALK_bubble_new2-01.png" />
+    <Content Include="images\TALK_bubble_new2.png" />
+    <Content Include="images\TALK_bubble_new2_pulldown.png" />
+    <Content Include="images\TALK_bubble_new2_pulldown_bottom-01.png" />
+    <Content Include="images\TALK_bubble_new2_pulldown_bottom.png" />
+    <Content Include="images\TALK_bubble_new2_pulldown_middle-01.png" />
+    <Content Include="images\TALK_bubble_new2_pulldown_middle.png" />
+    <Content Include="images\TALK_bubble_old-01.png" />
+    <Content Include="images\TALK_bubble_old-02.png" />
+    <Content Include="images\TALK_bubble_on-01.png" />
+    <Content Include="images\TALK_bubble_on-02.png" />
+    <Content Include="images\TALK_header.png" />
+    <Content Include="images\TALK_header_old.png" />
+    <Content Include="images\TALK_i.png" />
+    <Content Include="images\TALK_Landing_welcome.jpg" />
+    <Content Include="images\TALK_Login.png" />
+    <Content Include="images\TALK_Logo.png" />
+    <Content Include="images\TALK_Logo_over.png" />
+    <Content Include="images\TALK_new.png" />
+    <Content Include="images\TALK_wait-01.png" />
+    <Content Include="images\TALK_wait.png" />
+    <Content Include="index.html" />
+    <Content Include="jquery-mobile\js\jquery-1.9.1.min.js" />
+    <Content Include="jquery-mobile\js\jquery.mobile-1.3.1.min.js" />
+    <Content Include="jquery-mobile\styles\images\ajax-loader.gif" />
+    <Content Include="jquery-mobile\styles\images\icons-18-black.png" />
+    <Content Include="jquery-mobile\styles\images\icons-18-white.png" />
+    <Content Include="jquery-mobile\styles\images\icons-36-black.png" />
+    <Content Include="jquery-mobile\styles\images\icons-36-white.png" />
+    <Content Include="jquery-mobile\styles\jquery.mobile-1.3.1.min.css" />
+    <Content Include="Plugins\cordova-plugin-jshybugger\.gitignore" />
+    <Content Include="Plugins\cordova-plugin-jshybugger\.project" />
+    <Content Include="Plugins\cordova-plugin-jshybugger\LICENSE" />
+    <Content Include="Plugins\cordova-plugin-jshybugger\plugin.xml" />
+    <Content Include="Plugins\cordova-plugin-jshybugger\README.md" />
+    <Content Include="Plugins\cordova-plugin-jshybugger\src\android\libs\jshybugger-bundle-2.1.5.jar" />
+    <Content Include="Plugins\cordova-plugin-jshybugger\src\android\org\jshybugger\cordova\JsHybuggerPlugin.java" />
+    <Content Include="Plugins\cordova-plugin-jshybugger\www\jsHybuggerLoader.js" />
+    <Content Include="Plugins\cordova-plugin-media-master\.gitignore" />
+    <Content Include="Plugins\cordova-plugin-media-master\docs\.DS_Store" />
+    <Content Include="Plugins\cordova-plugin-media-master\docs\media.getCurrentPosition.md" />
+    <Content Include="Plugins\cordova-plugin-media-master\docs\media.getDuration.md" />
+    <Content Include="Plugins\cordova-plugin-media-master\docs\media.md" />
+    <Content Include="Plugins\cordova-plugin-media-master\docs\media.pause.md" />
+    <Content Include="Plugins\cordova-plugin-media-master\docs\media.play.md" />
+    <Content Include="Plugins\cordova-plugin-media-master\docs\media.release.md" />
+    <Content Include="Plugins\cordova-plugin-media-master\docs\media.seekTo.md" />
+    <Content Include="Plugins\cordova-plugin-media-master\docs\media.setVolume.md" />
+    <Content Include="Plugins\cordova-plugin-media-master\docs\media.startRecord.md" />
+    <Content Include="Plugins\cordova-plugin-media-master\docs\media.stop.md" />
+    <Content Include="Plugins\cordova-plugin-media-master\docs\media.stopRecord.md" />
+    <Content Include="Plugins\cordova-plugin-media-master\docs\MediaError\mediaError.md" />
+    <Content Include="Plugins\cordova-plugin-media-master\docs\Parameters\mediaError.md" />
+    <Content Include="Plugins\cordova-plugin-media-master\LICENSE" />
+    <Content Include="Plugins\cordova-plugin-media-master\plugin.xml" />
+    <Content Include="Plugins\cordova-plugin-media-master\README.md" />
+    <Content Include="Plugins\cordova-plugin-media-master\RELEASENOTES.md" />
+    <Content Include="Plugins\cordova-plugin-media-master\src\android\AudioHandler.java" />
+    <Content Include="Plugins\cordova-plugin-media-master\src\android\AudioPlayer.java" />
+    <Content Include="Plugins\cordova-plugin-media-master\src\android\FileHelper.java" />
+    <Content Include="Plugins\cordova-plugin-media-master\src\blackberry10\index.js" />
+    <Content Include="Plugins\cordova-plugin-media-master\src\ios\CDVSound.h" />
+    <Content Include="Plugins\cordova-plugin-media-master\src\ios\CDVSound.m" />
+    <Content Include="Plugins\cordova-plugin-media-master\src\windows8\MediaProxy.js" />
+    <Content Include="Plugins\cordova-plugin-media-master\src\wp\AudioPlayer.cs" />
+    <Content Include="Plugins\cordova-plugin-media-master\src\wp\Media.cs" />
+    <Content Include="Plugins\cordova-plugin-media-master\test\autotest\html\HtmlReporter.js" />
+    <Content Include="Plugins\cordova-plugin-media-master\test\autotest\html\HtmlReporterHelpers.js" />
+    <Content Include="Plugins\cordova-plugin-media-master\test\autotest\html\ReporterView.js" />
+    <Content Include="Plugins\cordova-plugin-media-master\test\autotest\html\SpecView.js" />
+    <Content Include="Plugins\cordova-plugin-media-master\test\autotest\html\SuiteView.js" />
+    <Content Include="Plugins\cordova-plugin-media-master\test\autotest\html\TrivialReporter.js" />
+    <Content Include="Plugins\cordova-plugin-media-master\test\autotest\index.html" />
+    <Content Include="Plugins\cordova-plugin-media-master\test\autotest\jasmine.css" />
+    <Content Include="Plugins\cordova-plugin-media-master\test\autotest\jasmine.js" />
+    <Content Include="Plugins\cordova-plugin-media-master\test\autotest\pages\.DS_Store" />
+    <Content Include="Plugins\cordova-plugin-media-master\test\autotest\pages\media.html" />
+    <Content Include="Plugins\cordova-plugin-media-master\test\autotest\test-runner.js" />
+    <Content Include="Plugins\cordova-plugin-media-master\test\autotest\tests\.DS_Store" />
+    <Content Include="Plugins\cordova-plugin-media-master\test\autotest\tests\media.tests.js" />
+    <Content Include="Plugins\cordova-plugin-media-master\test\cordova-incl.js" />
+    <Content Include="Plugins\cordova-plugin-media-master\test\index.html" />
+    <Content Include="Plugins\cordova-plugin-media-master\test\main.js" />
+    <Content Include="Plugins\cordova-plugin-media-master\test\master.css" />
+    <Content Include="Plugins\cordova-plugin-media-master\www\Media.js" />
+    <Content Include="Plugins\cordova-plugin-media-master\www\MediaError.js" />
+    <Content Include="scripts\controller.js" />
+    <Content Include="scripts\location.js" />
+    <Content Include="scripts\login.js" />
+    <Content Include="styles\images\location.png" />
+    <Content Include="styles\images\location2x.png" />
+    <Content Include="styles\images\location_active.png" />
+    <Content Include="styles\images\location_active2x.png" />
+    <Content Include="styles\images\search.png" />
+    <Content Include="styles\images\search2x.png" />
+    <Content Include="styles\images\search_active.png" />
+    <Content Include="styles\images\search_active2x.png" />
+    <Content Include="styles\main.css" />
+    <Content Include="cordova.ios.js">
+      <Platform>iOS</Platform>
+      <TargetName>cordova.js</TargetName>
+    </Content>
+    <Content Include="cordova.android.js">
+      <Platform>Android</Platform>
+      <TargetName>cordova.js</TargetName>
+    </Content>
+    <Content Include="styles\style.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Resources\" />
+    <Folder Include="App_Resources\Android\" />
+    <Folder Include="App_Resources\Android\drawable-hdpi\" />
+    <Folder Include="App_Resources\Android\drawable-ldpi\" />
+    <Folder Include="App_Resources\Android\drawable-mdpi\" />
+    <Folder Include="App_Resources\Android\drawable-nodpi\" />
+    <Folder Include="App_Resources\iOS\" />
+    <Folder Include="images\" />
+    <Folder Include="jquery-mobile\" />
+    <Folder Include="jquery-mobile\js\" />
+    <Folder Include="jquery-mobile\styles\" />
+    <Folder Include="jquery-mobile\styles\images\" />
+    <Folder Include="Plugins\" />
+    <Folder Include="Plugins\cordova-plugin-jshybugger\" />
+    <Folder Include="Plugins\cordova-plugin-jshybugger\src\" />
+    <Folder Include="Plugins\cordova-plugin-jshybugger\src\android\" />
+    <Folder Include="Plugins\cordova-plugin-jshybugger\src\android\libs\" />
+    <Folder Include="Plugins\cordova-plugin-jshybugger\src\android\org\" />
+    <Folder Include="Plugins\cordova-plugin-jshybugger\src\android\org\jshybugger\" />
+    <Folder Include="Plugins\cordova-plugin-jshybugger\src\android\org\jshybugger\cordova\" />
+    <Folder Include="Plugins\cordova-plugin-jshybugger\www\" />
+    <Folder Include="Plugins\cordova-plugin-media-master\" />
+    <Folder Include="Plugins\cordova-plugin-media-master\docs\" />
+    <Folder Include="Plugins\cordova-plugin-media-master\docs\MediaError\" />
+    <Folder Include="Plugins\cordova-plugin-media-master\docs\Parameters\" />
+    <Folder Include="Plugins\cordova-plugin-media-master\src\" />
+    <Folder Include="Plugins\cordova-plugin-media-master\src\android\" />
+    <Folder Include="Plugins\cordova-plugin-media-master\src\blackberry10\" />
+    <Folder Include="Plugins\cordova-plugin-media-master\src\ios\" />
+    <Folder Include="Plugins\cordova-plugin-media-master\src\windows8\" />
+    <Folder Include="Plugins\cordova-plugin-media-master\src\wp\" />
+    <Folder Include="Plugins\cordova-plugin-media-master\test\" />
+    <Folder Include="Plugins\cordova-plugin-media-master\test\autotest\" />
+    <Folder Include="Plugins\cordova-plugin-media-master\test\autotest\html\" />
+    <Folder Include="Plugins\cordova-plugin-media-master\test\autotest\pages\" />
+    <Folder Include="Plugins\cordova-plugin-media-master\test\autotest\tests\" />
+    <Folder Include="Plugins\cordova-plugin-media-master\www\" />
+    <Folder Include="scripts\" />
+    <Folder Include="styles\" />
+    <Folder Include="styles\images\" />
+  </ItemGroup>
+  <Import Project="$(IceniumTargets)Build.targets" />
+  <!--
+	TODO: Uncomment this code if you need to customize the build process.
+	<Target Name="BeforeBuild">
+		<Message Text="TODO: Implement BeforeBuild" Importance="high" />
+	</Target>
+
+	<Target Name="AfterBuild">
+		<Message Text="TODO: Implement AfterBuild" Importance="high" />
+	</Target>
+	-->
+</Project>
